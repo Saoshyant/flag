@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt">
+	<head>
+		<meta charset="utf-8">
+		<title>Fundamentos de Programação: Ciclos</title>
+		<script>
+			/* ciclo que repete acções um X numero de vezes, precisa de três coisas para funcionar:
+			   1) ter um contador para controlar quantas vezes está a correr
+			   2) ter um limite definido quando irá parar
+			   3) ter uma maneira de chegar a esse limite
+			*/
+
+			var i = 1;
+			while(i <= 4) {
+				//alert("O alerta disparou " +i+ " vez(es)");
+
+				i = i + 1;
+			}
+
+			var animals = ["Cavalo", "Zebra", "Girafa", "Pinguim", "Avestruz", "Trump"];
+			var j = 0;
+			while( j < animals.length ) {
+
+				console.log(animals[j]);
+
+				j = j + 1;
+			}
+
+			/* exercício 1: mostrar os numeros de 1 a 100 */
+			/* exercício 2: mostrar os numeros de 2 a 200, de dois em dois, ex: 2, 4, 6, 8... */
+			/* exercício 3: mostrar os numeros de 100 a 1, ou seja, a começar do mais alto para o mais baixo */
+			
+			var n = 1;
+			while(n <= 100) {
+				console.log("ex1: ", n);
+
+				n = n + 1;
+			}
+			
+			var m = 2;
+			while(m <= 200) {
+			
+				console.log("ex2: ", m);
+			
+				m = m + 2;
+			}
+
+			var x = 100;
+			while(x >= 1) {
+			
+				console.log("ex3: ", x);
+			
+				x = x - 1;
+			}
+		</script>
+	</head>
+	<body>
+	
+	</body>
+</html>

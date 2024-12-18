@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt">
+	<head>
+		<meta charset="utf-8">
+		<title>Fundamentos de Programação: Arrays</title>
+		<script>
+			var animals = ["Cavalo", "Zebra", "Girafa", "Burro"];
+			
+			console.log( animals[0] ); // mostra o Cavalo
+			console.log( animals[1] ); // mostra a Zebra
+			console.log( animals[2] ); // mostra a Girafa
+			console.log( animals[3] ); // mostra o Burro
+			
+			/* exercício: validar se a "girafa" está incluida no array com um IF
+			a validar as posições do array, uma a uma, até encontrar */
+			
+			if(animals[0] === "Girafa") { console.log("Encontrei a Girafa na posição 0"); }
+			if(animals[1] === "Girafa") { console.log("Encontrei a Girafa na posição 1"); }
+			if(animals[2] === "Girafa") { console.log("Encontrei a Girafa na posição 2"); }
+			if(animals[3] === "Girafa") { console.log("Encontrei a Girafa na posição 3"); }
+			
+			/* o pretendido é usar quatro condições até uma delas dar true quando encontrar a Girafa
+			  usamos o que aprendemos sobre condições e isolar posições de array em especifico
+			*/
+
+			//animals[4] = "Mula";
+			animals.push("Mula");
+
+			console.log(animals);
+
+			/* exercício: criar um array de modelos de carros, colocar uns 5 ou 6
+			   criar um segundo array com paises
+			   criar um terceiro array com velocidades, um numero de 20 em 20
+			   mostrar a mensagem pretendida com base nos requisitos abaixo:
+			   
+			   objectivo: mostrar coisas diferentes quando o utilizador selecionar uma posição especifica
+			   ou seja, se for usado [1], usar[1] de todos os arrays para construir uma mensagem
+			   exemplo: "Honda Civic está a andar por Portugal onde o limite de velocidade é 60"
+			*/
+			var pos = prompt("Escolha uma posição entre 0 e 4");
+
+			var cars = ["Toyota Corola", "Honda Civic", "Ferrari F40", "BMW 114", "Fiat Panda"];
+			var countries = ["Brasil", "Portugal", "Angola", "França", "Venezuela"];
+			var speeds = [40, 60, 80, 100, 120];
+			
+			console.log(cars[ pos ] + " está a andar por " + countries[pos] + " onde o limite de velocidade é " + speeds[pos]);
+		</script>
+	</head>
+	<body>
+	</body>
+</html>
