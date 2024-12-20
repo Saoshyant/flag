@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt">
+    <head>
+        <meta charset="utf-8">
+        <title>Fundamentos de Programação: Objectos Simples</title>
+        <script>
+            var superHero = {
+                name: "Homem-Aranha",
+                power: "Agilidade proporcional de uma aranha",
+                secretIdentity: "Peter Parker"
+            };
+            
+            console.log( superHero.name );
+            console.log( superHero.power );
+            console.log( superHero.secretIdentity );
+            
+            // x.prop => propriedade do objecto (object property)
+            
+            /* exercício: criar um obj a representar um super vilão com informação sobre o dito cujo */
+
+            var superVillain = {
+                name: "Thanos",
+                power: "SNAP",
+                objective: "Balancear o universo"
+            };
+            
+            console.log( superVillain.name, superVillain.power, superVillain.objective );
+            
+            var employee = {
+                name: "Zé Why Not",
+                jobTitle: "Recursos Humanos",
+                wage: 1000,
+                collectiveFiringsThisMonth: 0,
+                firePeople: function(number) {
+                    this.collectiveFiringsThisMonth = this.collectiveFiringsThisMonth + number
+                }
+            }
+
+            employee.firePeople(25); // 25
+            employee.firePeople(15); // 40
+            employee.firePeople(55); // 95
+            employee.firePeople(35); // 130
+            employee.firePeople(5);  // 135
+
+            console.log(
+                employee.name + " dos " + employee.jobTitle + " despediu este mês: " +
+                employee.collectiveFiringsThisMonth + " pessoas"
+            );
+        </script>
+    </head>
+    <body>
+        
+    </body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt">
+    <head>
+        <meta charset="utf-8">
+        <title>Fundamentos: Funções</title>
+        <script>
+            /*
+                existe uma maneira de poderem reutilizar blocos de código para fazer diferentes acções
+                chamamos a isso de funções
+                tem sempre duas partes:
+                1) a declaração da função
+                2) a sua invocação
+            */
+            
+            /* na declaração é decidido o nome, se recebe argumentos externos, e o que vai fazer quando for invocado */
+            function greeting(username) {
+                var date = new Date();
+                var statement = "Boa noite";
+
+                if(date.getHours() < 13) {
+                    statement = "Bom dia";
+                }
+
+                if(date.getHours() < 20) {
+                    statement = "Boa tarde";
+                }
+
+                console.log(statement + ", " + username);
+            }
+            
+            /* as diferentes invocações, podem haver todas as que precisarmos
+               quando uma função recebe um argumento externo, cada invocação irá reflectir essas diferenças
+            */
+            greeting("Ana");
+            greeting("Claudio");
+            greeting("Teresa");
+            greeting("Jonas");
+
+            /* exercicio: criar uma função nova que soma dois valores e depois diz o resultado desta forma:
+               "a soma de X e Y deu RESULTADO"
+               
+               exemplo de invocação:
+                   sum(4, 8);
+
+               output na consola: "a soma de 4 e 8 deu 12"
+               
+               necessário primeiro declarar essa nova função chamada de sum
+               definir que recebe dois argumentos, um X e um Y
+               fazer o trabalho de mostrar na consola o texto pretendido de output e fazer
+               a soma dos dois argumentos X e Y para ter o RESULTADO
+            */
+
+            function sum(x, y) {
+                var result = x + y;
+
+                console.log("a soma de " + x + " e " + y + " deu " + result);
+            }
+            
+            sum(4, 8);
+            sum(12, 3);
+            sum(2, 33);
+        </script>
+    </head>
+    <body>
+    </body>
+</html>

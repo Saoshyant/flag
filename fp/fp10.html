@@ -1,0 +1,51 @@
+<!-- 
+    novo exercício com funções
+    criar uma sistema de avaliação dos alunos (uma função unica)
+    dependendo da nota que eles receberam, a mensagem que irá aparecer ao utilizador será sempre diferente
+    
+    estamos a utilizar o sistema de avaliações portugues que vai de 0 a 20
+    de 0 a 9   = Negativo
+    de 10 a 14 = Suficiente 
+    de 15 a 18 = Bom
+    de 19 a 20 = Excelente
+
+    grader("Ana", 17); // Ana teve 17 que é Bom
+    grader("Jorge", 12); // Jorge teve 12 que é Suficiente
+    grader("Vincente", 4); // Vicente teve 4 que é Negativo
+    grader("Bernardete", 20); // Bernardete teve 20 que é Excelente
+-->
+<!DOCTYPE html>
+<html lang="pt">
+    <head>
+        <meta charset="utf-8">
+        <title>Fundamentos de Funções: Exercício de Avaliador</title>
+        <script>
+            function grader(name, score) {
+
+                var grade = "Excelente";
+
+                if(score <= 9) {
+                    grade = "Negativo";
+                }
+
+                if(score >= 10 && score <= 14) {
+                    grade = "Suficiente";
+                }
+
+                if(score >= 15 && score <= 18) {
+                    grade = "Bom";
+                }
+
+                console.log(name + " teve " + score + " que é " + grade);
+            }
+
+            grader("Ana", 17);
+            grader("Jorge", 12);
+            grader("Vincente", 4);
+            grader("Bernardete", 20);
+        </script>
+    </head>
+    <body>
+        
+    </body>
+</html>
