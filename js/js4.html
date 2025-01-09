@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt">
+	<head>
+		<meta charset="utf-8">
+		<title>JavaScript: Evento de Clique</title>
+		<script>
+			document.addEventListener("DOMContentLoaded", function() {
+			
+				const btn = document.getElementById("btn");
+				const img = document.getElementById("image");
+				
+				let puppyImage = img.src;
+				let kittyImage = "https://wallup.net/wp-content/uploads/2018/10/06/708179-kittens-kitten-cat-cats-baby-cute-s.jpg";
+
+				btn.addEventListener("click", function() {
+
+					/* exercício: tornar isto "inteligente".  Clicar vai alternar entre duas imagens: a que estava inicialmente e a que fica depois, cada vez que se clica, troca entre as duas imagens possiveis
+						para isso usar dois fundamentos de programação:
+						1) variavel para guardar coisas antes de se perderem
+					    2) if/else que permitem testar uma condição e fazer ou um cenário ou o outro
+					*/
+				
+					if(img.src == puppyImage) {
+						img.src = kittyImage;
+					}
+					else {
+						img.src = puppyImage;
+					}
+					
+				});
+			
+			});
+		</script>
+		<style>
+			img { width: 100%; }
+		</style>
+	</head>
+	<body>
+		<div>
+			<button id="btn" type="button">Clica-me</button>
+		</div>
+		<div>
+			<img id="image" src="https://getwallpapers.com/wallpaper/full/6/d/0/868430-download-free-cute-puppies-wallpaper-hd-1920x1280-free-download.jpg" alt="">
+		</div>
+	</body>
+</html>

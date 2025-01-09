@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt">
+	<head>
+		<meta charset="utf-8">
+		<title>JavaScript: Interagir com e manipular atributos de HTML</title>
+		<script>
+			document.addEventListener("DOMContentLoaded", function() {
+			
+				const img = document.getElementById("Imagem");
+
+				console.log( img.src );
+				
+				img.src = "https://wallup.net/wp-content/uploads/2018/10/06/708179-kittens-kitten-cat-cats-baby-cute-s.jpg";
+				
+				/* exercício:
+				  1) selecionar o Link
+				  2) alterar o seu HREF para https://flag.pt
+				  3) alterar o texto dentro do Link para "Flag"
+				*/
+				const Link = document.getElementById("Link");
+				Link.href = "https://flag.pt";
+				Link.textContent = "Flag";
+				
+			});
+		</script>
+	</head>
+	<body>
+		<div>
+			<a id="Link" href="https://example.org">Link de exemplo</a>
+		</div>
+		<div>
+			<img id="Imagem" src="https://getwallpapers.com/wallpaper/full/6/d/0/868430-download-free-cute-puppies-wallpaper-hd-1920x1280-free-download.jpg" alt="">
+		</div>
+	</body>
+</html>

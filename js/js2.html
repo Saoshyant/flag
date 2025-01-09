@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt">
+	<head>
+		<meta charset="utf-8">
+		<title>JavaScript: Interagir com o Documento</title>
+		<script>
+			document.addEventListener("DOMContentLoaded", function() {
+			
+				const elemento = document.getElementById("elemento");
+
+				console.log(elemento);
+
+				/* agora que existe um novo elemento na pagina com um ID único,
+				   selecionar por JavaScript para dentro de uma variavel e mostrar na consola
+				*/
+				const p = document.getElementById("paragrafo");
+
+				console.log( p );
+				console.log( p.textContent );
+				console.log( elemento.textContent );
+			});
+		</script>
+	</head>
+	<body>
+		<div id="elemento">Cenas e coisas</div>
+		<p id="paragrafo">Texto e cenas e mais coisas lorem ipsum</p>
+	</body>
+</html>

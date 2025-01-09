@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt">
+	<head>
+		<meta charset="utf-8">
+		<title>JavaScript: Alterar Estilização</title>
+		<script>
+			document.addEventListener("DOMContentLoaded", function() {
+			
+				const cobaia = document.getElementById("cobaia");
+				const cobaia2 = document.getElementById("cobaia2");
+
+				/* técnica 1: alterar o CSS inline directamente */
+				cobaia.style.color = "#F00";
+				cobaia.style.border = "2px solid #CCC";
+				cobaia.style.padding = "8px";
+				cobaia.style.fontFamily = "Arial, sans-serif";
+				cobaia.style.textAlign = "center";
+
+				/* técnica 2: aplicar uma classe de CSS já pré-feita */
+				cobaia2.classList.add("green-box");
+			});
+		</script>
+		<style>
+			.green-box {
+				width: 400px;
+				height: 300px;
+				background-color: #060;
+				text-align: center;
+				line-height: 300px;
+				font-weight: bold;
+				color: #FFF;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="cobaia">Texto qualquer</div>
+		<div id="cobaia2">Outro texto qualquer</div>
+	</body>
+</html>
