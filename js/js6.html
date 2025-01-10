@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt">
+	<head>
+		<meta charset="utf-8">
+		<title>Exercício: Alternar entre duas classes de CSS ao pressionar um botão</title>
+		<script>
+			/* passos:
+			    1) pedir para esperar que o documento carregue
+				2) selecionar os dois elementos de HTML por ID
+				3) aplicar evento de clique no button 
+				4) ao clicar no button, adicionar class "red" ao "box"
+				5) só aí preocuparem-se com o alternar entre "red" e "green"
+			*/
+			document.addEventListener("DOMContentLoaded", function() {
+
+				const btn = document.getElementById("btn");
+				const box = document.getElementById("box");
+				
+				box.classList.add("red");
+				
+				btn.addEventListener("click", function() {
+
+					/*
+					if( box.classList.contains("red") == false ) {
+						box.classList.remove("green");
+						box.classList.add("red");
+					}
+					else {
+						box.classList.remove("red");
+						box.classList.add("green");
+					}
+					*/
+
+					box.classList.toggle("red");
+					box.classList.toggle("green");
+					
+				});
+			});
+		</script>
+		<style>
+			#box {
+				transition: all 1s;
+			}
+
+			.red {
+				width: 500px;
+				height: 400px;
+				background-color: #F00;
+				color: #FFF;
+				font-size: 200%;
+				text-align: center;
+				line-height: 400px;
+			}
+			
+			.green {
+				width: 250px;
+				height: 200px;
+				background-color: #060;
+				color: #FFF;
+				font-weight: bold;
+				text-align: center;
+				line-height: 200px;
+			}
+		</style>
+	</head>
+	<body>
+		<div>
+			<button type="button" id="btn">Mudar Aspecto</button>
+		</div>
+		<div id="box">Texto que vai mudando de aspecto</div>
+	</body>
+</html>

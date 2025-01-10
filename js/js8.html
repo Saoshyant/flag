@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt">
+	<head>
+		<meta charset="utf-8">
+		<title>Lidar com Arrays e Eventos em Multiplos Elementos</title>
+		<script>
+			const countries = ["Portugal", "Espanha", "Cabo Verde", "Brasil", "França"];
+
+			let i = 0;
+			while(i < countries.length) {
+
+				console.log(i, countries[i]);
+			
+				i++;
+			}
+			
+			for(let i = 0; i < countries.length; i++) {
+				console.log(i, countries[i]);
+			}
+
+			document.addEventListener("DOMContentLoaded", function() {
+
+				const buttons = document.getElementsByTagName("button");
+
+				for(let i = 0; i < buttons.length; i++) {
+
+					buttons[ i ].addEventListener("click", function() {
+						console.log("Clicaste no " + buttons[i].textContent );
+					});
+				}
+			});
+		</script>
+	</head>
+	<body>
+		<div>
+			<button type="button">1</button>
+			<button type="button">2</button>
+			<button type="button">3</button>
+			<button type="button">4</button>
+			<button type="button">5</button>
+		</div>
+	</body>
+</html>

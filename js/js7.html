@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt">
+	<head>
+		<meta charset="utf-8">
+		<title>Exercício com Modal</title>
+		<script>
+			document.addEventListener("DOMContentLoaded", function() {
+			
+				const modalWrapper = document.getElementById("ModalWrapper");
+				const showModalBtn = document.getElementById("showModal");
+				const agreesBtn = document.getElementById("agrees");
+
+				showModalBtn.addEventListener("click", function() {
+					modalWrapper.classList.remove("hide");
+				});
+
+				agreesBtn.addEventListener("click", function() {
+					modalWrapper.classList.add("hide");
+				});
+
+			});
+		</script>
+		<style>
+			body { margin: 0; padding: 0; }
+
+			.hide {
+				display: none !important;
+			}
+
+			#ModalWrapper {
+				width: 100vw;
+				height: 100vh;
+				background-color: rgba(0, 0, 0, 0.4);
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				position: fixed;
+				top: 0;
+				left: 0;
+			}
+			
+			#Modal {
+				min-width: 60vw;
+				min-height: 60vh;
+				background-color: #FFF;
+				padding: 40px;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+			}
+
+			#Modal div {
+				text-align: center;
+				margin: 10px 0;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="ModalWrapper" class="hide">
+			<div id="Modal">
+				<div>Popup irritante a vender a tua informação a 600 entidades</div>
+				<div><button type="button" id="agrees">Aceito, claro</button></div>
+			</div>
+		</div>
+		<div>
+			<button type="button" id="showModal">Mostrar Modal</button>
+		</div>
+	</body>
+</html>

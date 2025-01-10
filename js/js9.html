@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt">
+	<head>
+		<meta charset="utf-8">
+		<title>Jogo do Pedra, Papel, Tesoura</title>
+		<script>
+			/* implementar este jogo, regras:
+			   Papel vence Pedra, Pedra vence Tesoura, Tesoura vence Papel
+
+			   passos:
+			   1) esperar documento carregue
+			   2) selecionar todos os botões
+			   3) utilizar um ciclo para aplicar o mesmo evento nos três botões
+			   4) comparar a jogada do utilizador (texto do botão clicado) com o escolhido pelo computador
+			   5) informar o utilizador na consola: empate, ganhou, perdeu
+		     */
+			document.addEventListener("DOMContentLoaded", function() {
+				const cpuChoice = "Tesoura";
+
+				const buttons = document.getElementsByTagName("button");
+				
+				for(let i = 0; i < buttons.length; i++) {
+
+					buttons[i].addEventListener("click", function() {
+					
+						const playerChoice = buttons[i].textContent;
+
+						if(cpuChoice === playerChoice) {
+							console.log("Empate");
+						}
+
+						if(
+							(cpuChoice === "Pedra" && playerChoice === "Papel") ||
+							(cpuChoice === "Papel" && playerChoice === "Tesoura") ||
+							(cpuChoice === "Tesoura" && playerChoice === "Pedra")
+						) {
+							console.log("Venceu");
+						}
+
+						if(
+							(cpuChoice === "Pedra" && playerChoice === "Tesoura") ||
+							(cpuChoice === "Papel" && playerChoice === "Pedra") ||
+							(cpuChoice === "Tesoura" && playerChoice === "Papel")
+						) {
+							console.log("Perdeu");
+						}
+					});
+				}
+			});
+			
+		</script>
+	</head>
+	<body>
+		<h1>Jogo Pedra, Papel, Tesoura</h1>
+		<dl>
+			<dt>Jogador</dt>
+			<dd id="player">___________</dd>
+			<dt>Computador</dt>
+			<dd id="cpu">_____________</dd>
+			<dt>Resultado</dt>
+			<dd id="result">__________</dd>
+		</dl>
+		<div>
+			<button type="button">Pedra</button>
+			<button type="button">Papel</button>
+			<button type="button">Tesoura</button>
+		</div>
+	</body>
+</html>
