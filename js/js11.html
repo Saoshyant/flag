@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt">
+	<head>
+		<meta charset="utf-8">
+		<title>Como criar números aleatórios</title>
+		<script>
+			console.log( Math.random() ); // retorna um numero entre 0.000000000000001 - 0.999999999999999
+			
+			console.log( Math.random() * 10 ); // deixa de retornar só valores de 0
+			
+			console.log( Math.round(Math.random() * 10) ); // arrendondando, tira as casas decimais, mas ainda não consegue um número entre 1 e 10
+
+			console.log("baixo", Math.floor(0.000000001) ); // => 0
+			console.log("baixo", Math.floor(0.999999999) ); // => 0
+
+			console.log("cima", Math.ceil(0.000000001) ); // => 1
+			console.log("cima", Math.ceil(0.999999999) ); // => 1
+
+			console.log("entre 0 e 9", Math.floor(Math.random() * 10) ); // entre 0 e 9
+			console.log("entre 1 e 10", Math.ceil(Math.random() * 10) ); // entre 1 e 10
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>

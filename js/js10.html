@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt">
+	<head>
+		<meta charset="utf-8">
+		<title>Usar o mesmo ciclo para dois arrays diferentes</title>
+		<script>
+			const cities = ["Lisboa", "Porto", "Aveiro", "Bragança", "Faro"];
+			
+			/* exercício: depois de obter todos os LIs e usando um ciclo,
+			   preencher cada LI com cada cidade individual */
+			document.addEventListener("DOMContentLoaded", function() {
+				const listItems = document.getElementsByTagName("li");
+			
+				for(let i = 0; i < listItems.length; i++) {
+
+					listItems[i].textContent = cities[i];
+				}
+			});
+			
+		</script>
+	</head>
+	<body>
+		<h1>Cidades</h1>
+		<ul>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt">
+	<head>
+		<meta charset="utf-8">
+		<title>Jogo do Galo</title>
+		<style>
+			main div {
+				display: flex;
+			}
+
+			main div button {
+				width: 30vw;
+				min-height: 20vh;
+				border: 1px solid #CCC;
+				font-size: 6vw;
+				cursor: pointer;
+			}
+		</style>
+		<script>
+			/* exercício: implementar o codigo necessario para que apareça um X no acto de clique em qualquer um dos botões */
+			document.addEventListener("DOMContentLoaded", function() {
+				const buttons = document.getElementsByTagName("button");
+				
+				let currentSymbol = "X";
+
+				for(let i = 0; i < buttons.length; i++) {
+
+					buttons[i].addEventListener("click", function() {
+
+						if(buttons[i].textContent === "") {
+							buttons[i].textContent = currentSymbol;
+
+							if(currentSymbol === "X") {
+								currentSymbol = "O";
+							}
+							else {
+								currentSymbol = "X";
+							}
+						}
+
+						if(
+							buttons[0].textContent !== "" &&
+							buttons[0].textContent === buttons[1].textContent &&
+							buttons[0].textContent === buttons[2].textContent
+						) {
+							alert("Terminou");
+						}
+
+						//buttons[i].disabled = true;
+					});
+				}
+			});
+		</script>
+	</head>
+	<body>
+		<main>
+			<div>
+				<button type="button"></button>
+				<button type="button"></button>
+				<button type="button"></button>
+			</div>
+			<div>
+				<button type="button"></button>
+				<button type="button"></button>
+				<button type="button"></button>
+			</div>
+			<div>
+				<button type="button"></button>
+				<button type="button"></button>
+				<button type="button"></button>
+			</div>
+		</main>
+	</body>
+</html>

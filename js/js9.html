@@ -15,7 +15,11 @@
 			   5) informar o utilizador na consola: empate, ganhou, perdeu
 		     */
 			document.addEventListener("DOMContentLoaded", function() {
-				const cpuChoice = "Tesoura";
+				const choices = ["Pedra", "Papel", "Tesoura"];
+				
+				const cpuElement = document.getElementById("cpu");
+				const playerElement = document.getElementById("player");
+				const resultElement = document.getElementById("result");
 
 				const buttons = document.getElementsByTagName("button");
 				
@@ -25,8 +29,11 @@
 					
 						const playerChoice = buttons[i].textContent;
 
+						const randomPlay = Math.floor(Math.random() * 3);
+						const cpuChoice = choices[randomPlay];
+
 						if(cpuChoice === playerChoice) {
-							console.log("Empate");
+							resultElement.textContent = "Empate";
 						}
 
 						if(
@@ -34,7 +41,7 @@
 							(cpuChoice === "Papel" && playerChoice === "Tesoura") ||
 							(cpuChoice === "Tesoura" && playerChoice === "Pedra")
 						) {
-							console.log("Venceu");
+							resultElement.textContent = "Venceu";
 						}
 
 						if(
@@ -42,8 +49,11 @@
 							(cpuChoice === "Papel" && playerChoice === "Pedra") ||
 							(cpuChoice === "Tesoura" && playerChoice === "Papel")
 						) {
-							console.log("Perdeu");
+							resultElement.textContent = "Perdeu";
 						}
+						
+						cpuElement.textContent = cpuChoice;
+						playerElement.textContent = playerChoice;
 					});
 				}
 			});
