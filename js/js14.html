@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt">
+	<head>
+		<meta charset="utf-8">
+		<title>Intervalos de Tempo</title>
+		<script>
+			let h = 0;
+			let m = 0;
+			let s = 0;
+
+			/* setInterval permite criar eventos temporais que correm como um ciclo a cada X milisegundos */
+			setInterval(function() {
+
+				/* exercício actual: em vez de usar três setIntervals diferentes para fazer o cronometro,
+				  vamos usar apenas um, aquele que lida com a medida de tempo mais baixa,
+				  ou seja, os segundos */
+
+				s++;
+
+				if(s > 59) {
+					s = 0;
+					m++;
+				}
+
+				if(m > 59) {
+					m = 0;
+					h++;
+				}
+
+				if(h > 23) {
+					h = 0;
+				}
+
+				document.getElementById("seconds").textContent = s;
+				document.getElementById("minutes").textContent = m;
+				document.getElementById("hours").textContent = h;
+			
+			}, 1);
+		</script>
+	</head>
+	<body>
+		<div>
+			<span id="hours">0</span> :
+			<span id="minutes">0</span> :
+			<span id="seconds">0</span>
+		</div>
+	</body>
+</html>
