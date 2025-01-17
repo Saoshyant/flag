@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt">
+	<head>
+		<meta charset="utf-8">
+		<title>Datas e Horas</title>
+		<script>
+			const datetime = new Date();
+
+			console.log(  datetime.getHours(), datetime.getMinutes(), datetime.getSeconds() );
+			
+			console.log( datetime.getYear() + 1900 );
+			
+			console.log( datetime.getFullYear() );
+			
+			console.log( datetime.getMonth() + 1 );
+			
+			console.log( datetime.getDate() );
+			
+			/* exercício:
+			   criar um relógio com o setInterval e o Date que aprendemos agora
+			*/
+			
+			document.addEventListener("DOMContentLoaded", function() {
+				const hours = document.getElementById("hours");
+				const minutes = document.getElementById("minutes");
+				const seconds = document.getElementById("seconds");
+				
+				let h = datetime.getHours();
+				let m = datetime.getMinutes();
+				let s = datetime.getSeconds();
+
+				setInterval(function() {
+
+					s++;
+
+					if(s > 59) {
+						s = 0;
+						m++;
+					}
+
+					if(m > 59) {
+						m = 0;
+						h++;
+					}
+
+					if(h > 23) {
+						h = 0;
+					}
+
+					  hours.textContent = h < 10 ? "0"+h : h;
+					minutes.textContent = m < 10 ? "0"+m : m;
+					seconds.textContent = s < 10 ? "0"+s : s;
+
+				}, 1000);
+			});
+		</script>
+	</head>
+	<body>
+		<div>
+			<span id="hours">0</span> :
+			<span id="minutes">0</span> :
+			<span id="seconds">0</span>
+		</div>
+	</body>
+</html>

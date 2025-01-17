@@ -1,0 +1,42 @@
+<!--
+exercício
+novo ficheiro
+que vai ter um efeito espectacular
+a cada segundo que passa, a cor de fundo do BODY vai estar a mudar aleatoriamente
+criando um efeito tipo rave party
+-->
+<!DOCTYPE html>
+<html lang="pt">
+	<head>
+		<meta charset="utf-8">
+		<title>Cores aleatórias a cada segundo que passa</title>
+		<script>
+			/*
+				passos:
+				1) selecionar o BODY 
+				2) criar cores aleatórias, lembrando que para serem números, o formato RGB é de 0 a 255 e são três canais de cores ao todo
+				3) aplicar e gerar essas cores aleatorias a cada segundo que passa
+				4) melhorar o resultado final, criando uma função para a geração das cores
+			*/
+			document.addEventListener("DOMContentLoaded", function() {
+				const body = document.querySelector("body");
+
+				function randomColor() {
+					return Math.floor(Math.random() * 256);
+				}
+
+				setInterval(function() {
+
+					const r = randomColor();
+					const g = randomColor();
+					const b = randomColor();
+
+					body.style.backgroundColor = "rgb(" +r+ ", " +g+ ", " +b+ ")";
+
+				}, 1000);
+			});
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

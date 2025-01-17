@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt">
+	<head>
+		<meta charset="utf-8">
+		<title>Interação com Formulários</title>
+		<script>
+			document.addEventListener("DOMContentLoaded", function() {
+
+				const form = document.querySelector("form");
+				
+				form.addEventListener("submit", function(event) {
+					
+					/*
+						não permitir que o formulário saia da página
+						que é o seu comportamento default
+						se sair da página, o JS não consegue fazer coisas
+					*/
+					event.preventDefault();
+
+					console.log( form.full_name.value );
+					console.log( form.email.value );
+					console.log( form.comments.value );
+					
+					/* exercício: validar se o utilizador digitou bem a password 
+					   se não tiver, mostrar mensagem de erro na consola
+					*/
+					if( form.password.value !== form.password_confirm.value ) {
+						console.log("Digitou mal a password");
+					}
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<form method="post" action="js17.html">
+			<div>
+				<label>
+					Nome Completo
+					<input type="text" name="full_name">
+				</label>
+			</div>
+			<div>
+				<label>
+					Email
+					<input type="email" name="email">
+				</label>
+			</div>
+			<div>
+				<label>
+					Password
+					<input type="password" name="password">
+				</label>
+			</div>
+			<div>
+				<label>
+					Repetir Password
+					<input type="password" name="password_confirm">
+				</label>
+			</div>
+			<div>
+				<label>
+					Comentários
+					<textarea name="comments"></textarea>
+				</label>
+			</div>
+			<div>
+				<button type="submit">Enviar</button>
+			</div>
+		</form>
+	</body>
+</html>
