@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt">
+	<head>
+		<meta charset="utf-8">
+		<title>Navegação no DOM</title>
+		<script>
+			document.addEventListener("DOMContentLoaded", function() {
+			
+				const list = document.getElementById("list");
+
+				console.log( list.firstElementChild.textContent );
+				
+				console.log( list.lastElementChild.textContent );
+				
+				
+				console.log( list.firstElementChild.nextElementSibling );
+				
+				console.log( list.lastElementChild.previousElementSibling );
+				
+				console.log( list.children[2].textContent, list.children[2].nodeName );
+
+
+				console.log( list.children[3].lastElementChild.children[1].lastElementChild.lastElementChild.lastElementChild ); // CATCH ME IF YOU CAN
+			});
+		</script>
+	</head>
+	<body>
+		<ul id="list">
+			<li>Item 1</li>
+			<li>Item 2</li>
+			<li>Item 3</li>
+			<li>Item 4
+				<ul>
+					<li>Subitem 1</li>
+					<li>Subitem 2
+						<ul>
+							<li>Subsubitem 1</li>
+							<li>Subsubitem 2</li>
+							<li>Subsubitem 3 <span>CATCH ME IF YOU CAN</span></li>
+						</ul>
+					</li>
+					<li>Subitem 3</li>
+				</ul>
+			</li>
+			<li>Item 5</li>
+		</ul>
+	</body>
+</html>

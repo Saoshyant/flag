@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt">
+	<head>
+		<meta charset="utf-8">
+		<title>Validação de Login Complexo</title>
+		<script>
+			document.addEventListener("DOMContentLoaded", function() {
+
+				const form = document.querySelector("form");
+
+				const users = [
+					{
+						username: "JoelCruz1990",
+						password: "123456789"
+					},
+					{
+						username: "CristinaBrito",
+						password: "12345678"
+					},
+					{
+						username: "VanessaSTG",
+						password: "Password01"
+					},
+					{
+						username: "GustavoCoisas",
+						password: "pAssw0rd"
+					}
+				];
+
+				form.addEventListener("submit", function(event) {
+
+					event.preventDefault();
+					
+					let userFound = false;
+
+					for(let i = 0; i < users.length; i++) {
+
+						if(
+							form.username.value === users[i].username &&
+							form.password.value === users[i].password
+						) {
+							userFound = true;
+							alert("Bem vindo " + users[i].username);
+						}
+					}
+
+					if(userFound === false) {
+						alert("Dados incorrectos");
+					}
+
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<h1>Efectue Login</h1>
+		<form method="post" action="js18.html">
+			<div>
+				<label>
+					Nome Utilizador
+					<input type="text" name="username" required>
+				</label>
+			</div>
+			<div>
+				<label>
+					Password
+					<input type="password" name="password" required>
+				</label>
+			</div>
+			<div>
+				<button type="submit">Login</button>
+			</div>
+		</form>
+	</body>
+</html>

@@ -1,0 +1,61 @@
+<!--
+ exercício
+ construir um formulario de HTML com username e password
+ vai ser um formulario de login, que posteriormente vamos validar uma conta de utilizador
+-->
+<!DOCTYPE html>
+<html lang="pt">
+	<head>
+		<meta charset="utf-8">
+		<title>Validação de Login</title>
+		<script>
+			document.addEventListener("DOMContentLoaded", function() {
+
+				const form = document.querySelector("form");
+
+				const user = {
+					username: "JoelCruz1990",
+					password: "123456789"
+				};
+
+				form.addEventListener("submit", function(event) {
+
+					event.preventDefault();
+
+					/* validar o submetido no formulário
+					   se utilizador providenciou username e password correctos (existem na variavel "user")
+					   mostrar um alerta a dizer "bem vindo nome utilizador"
+					   caso contrário "dados incorrectos"
+					*/
+					
+					if(form.username.value === user.username && form.password.value === user.password) {
+						alert("Bem vindo " + user.username);
+					}
+					else {
+						alert("Dados incorrectos");
+					}
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<h1>Efectue Login</h1>
+		<form method="post" action="js18.html">
+			<div>
+				<label>
+					Nome Utilizador
+					<input type="text" name="username" required>
+				</label>
+			</div>
+			<div>
+				<label>
+					Password
+					<input type="password" name="password" required>
+				</label>
+			</div>
+			<div>
+				<button type="submit">Login</button>
+			</div>
+		</form>
+	</body>
+</html>

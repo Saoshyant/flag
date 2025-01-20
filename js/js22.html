@@ -1,0 +1,42 @@
+<!--
+	
+		exercício:
+		criar novo documento, colocar um <UL>
+		a cada segundo que passa
+		acrescentar um <LI> com o texto "Item X" a esse <UL>
+		sendo o "X" um numero dinamico por cada <LI> que já foi acrescentado
+-->
+<!DOCTYPE html>
+<html lang="pt">
+	<head>
+		<meta charset="utf-8">
+		<title>Exercício de manipulação dinâmica do documento</title>
+		<script>
+			document.addEventListener("DOMContentLoaded", function() {
+/*
+exercício:
+colocar o setInterval a criar 10 LIs um a um, e depois a remover os 10 LIs criados um a um
+ou seja, append de Item 1, Item 2, etc até chegar ao 10
+quando chegar ao 10, começar a fazer remove() um a um até não ficar nenhum
+e depois repetir tudo outra vez (criação e depois remoção)
+*/
+				const list = document.getElementById("list");
+				
+				let itemNumber = 1;
+
+				setInterval(function() {
+				
+					list.appendChild( document.createElement("li") );
+
+					list.lastElementChild.textContent = "Item " + itemNumber;
+
+					itemNumber++;
+				
+				}, 1000);
+			});
+		</script>
+	</head>
+	<body>
+		<ul id="list"></ul>
+	</body>
+</html>

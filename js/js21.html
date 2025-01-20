@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt">
+	<head>
+		<meta charset="utf-8">
+		<title>Manipulação do DOM</title>
+		<script>
+			document.addEventListener("DOMContentLoaded", function() {
+
+				const list = document.getElementById("list");
+				const p = document.getElementById("text");
+
+				list.appendChild( document.createElement("li") );
+				list.lastElementChild.textContent = "Item 3";
+				
+				// ou em alternativa, fazer tudo numa unica linha:
+				list.appendChild( document.createElement("li") ).textContent = "Item 4";
+				
+				p.lastElementChild.remove();
+				
+				const btnRemove = document.getElementById("btnRemove");
+				
+				btnRemove.addEventListener("click", function() {
+
+					btnRemove.parentElement.remove();
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<ul id="list">
+			<li>Item 1</li>
+			<li>Item 2</li>
+		</ul>
+		<p id="text">Lorem ipsum <em>cenas</em> e tal</p>
+		<div>
+			<button type="button" id="btnRemove">Remover DIV</button>
+		</div>
+	</body>
+</html>
