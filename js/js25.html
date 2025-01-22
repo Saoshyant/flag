@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt">
+	<head>
+		<meta charset="utf-8">
+		<title>Agenda de Tarefas</title>
+		<script>
+			/*
+				exercício:
+				interagir com o formulário
+				capturar o preenchido pelo utilizador no campo
+				manipular a lista para acrescentar novos LIs com cada uma das novas tarefas
+				para eventualmente guardar no storage, vamos primeiro criar uma estrutura de dados que armazene as tarefas (array)
+				quando alteramos o array, guardamos imediatamente no storage
+				mas para o fazer, temos que converter o array em texto
+			*/
+
+			document.addEventListener("DOMContentLoaded", function() {
+				const form = document.querySelector("form");
+				const list = document.getElementById("list");
+
+				let taskList = [];
+				
+				if(localStorage["tasks"]) { // isto existe? já existem lá tarefas armazenadas
+					taskList = JSON.parse(localStorage["tasks"]);
+					
+					console.log("array local", taskList);
+				}
+				
+				form.addEventListener("submit", function(event) {
+
+					event.preventDefault();
+					
+					list.appendChild( document.createElement("li") );
+
+					list.lastElementChild.textContent = form.task.value;
+
+					taskList.push( form.task.value );
+					
+					localStorage["tasks"] = JSON.stringify(taskList);
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<form method="post" action="js25.html">
+			<div>
+				<label>
+					Nova Tarefa
+					<input type="text" name="task" autofocus required>
+				</label>
+				<button type="submit">Adicionar</button>
+			</div>
+		</form>
+		<ol id="list"></ol>
+	</body>
+</html>

@@ -25,10 +25,19 @@ e depois repetir tudo outra vez (criação e depois remoção)
 				let itemNumber = 1;
 
 				setInterval(function() {
-				
-					list.appendChild( document.createElement("li") );
 
-					list.lastElementChild.textContent = "Item " + itemNumber;
+					if(itemNumber < 11) {
+						list.appendChild( document.createElement("li") );
+
+						list.lastElementChild.textContent = "Item " + itemNumber;
+					}
+					else {
+						list.lastElementChild.remove();
+					}
+
+					if(itemNumber === 20) {
+						itemNumber = 0;
+					}
 
 					itemNumber++;
 				

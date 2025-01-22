@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt">
+	<head>
+		<meta charset="utf-8">
+		<title>JSON</title>
+		<script>
+			const countries = [
+				{
+					name: "Portugal",
+					capital: "Lisboa",
+					population: 10000000
+				},
+				{
+					name: "Espanha",
+					capital: "Madrid",
+					population: 48000000
+				},
+				{
+					name: "França",
+					capital: "Paris",
+					population: 68000000
+				}
+			];
+			
+			console.log( countries[1].name );
+			
+			const countriesJSON = JSON.stringify(countries);
+			
+			console.log(countriesJSON);
+			
+			sessionStorage["countries"] = countriesJSON;
+		</script>
+	</head>
+	<body>
+	</body>
+</html>
