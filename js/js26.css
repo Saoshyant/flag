@@ -1,0 +1,14 @@
+#gameArea {
+	margin-bottom: 30px;
+}
+
+#gameArea span {
+	font-size: 2rem;
+	font-weight: bold;
+	letter-spacing: 0.6rem;
+	text-transform: uppercase;
+}
+
+form input {
+	max-width: 35px;
+}

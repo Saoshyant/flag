@@ -23,20 +23,27 @@
 				if(localStorage["tasks"]) { // isto existe? já existem lá tarefas armazenadas
 					taskList = JSON.parse(localStorage["tasks"]);
 					
-					console.log("array local", taskList);
+					for(let i = 0; i < taskList.length; i++) {
+
+						list.appendChild( document.createElement("li") );
+
+						list.lastElementChild.textContent = taskList[i];
+					}
 				}
-				
+
 				form.addEventListener("submit", function(event) {
 
-					event.preventDefault();
+					event.preventDefault(); // prevenir a saida da pagina
 					
-					list.appendChild( document.createElement("li") );
+					list.appendChild( document.createElement("li") ); // acrescentar o <li>
 
-					list.lastElementChild.textContent = form.task.value;
+					list.lastElementChild.textContent = form.task.value; // escrever o texto na pagina
 
-					taskList.push( form.task.value );
+					taskList.push( form.task.value ); // guardar no array local
 					
-					localStorage["tasks"] = JSON.stringify(taskList);
+					localStorage["tasks"] = JSON.stringify(taskList); // para depois guardar no storage permanente
+
+					form.task.value = ""; // limpar o campo
 				});
 			});
 		</script>
