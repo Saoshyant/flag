@@ -9,6 +9,27 @@
 				const form = document.querySelector("form");
 				const chatbox = document.getElementById("chatbox");
 
+				const writeMessage = (name, message) => {
+				
+					// hora actual (isto é calculado cá dentro)
+					// username (isto vem de fora, ou é o username do utilizador ou é um nome de um bot)
+					// message a escrever (isto vem de fora)
+
+					const datetime = new Date();
+					const currenttime = "[" +datetime.toLocaleTimeString("pt-PT")+ "]";
+
+					chatbox
+					.appendChild( document.createElement("dt") )
+					.textContent = name;
+
+					chatbox
+					.appendChild( document.createElement("dd") )
+					.textContent = currenttime + " " + message;
+
+					/* empurrar o scroll para baixo à medida que a caixa vai crescendo */
+					chatbox.scrollTo(0, chatbox.scrollHeight);
+				}
+
 				const bots = [
 					{
 						name: "Fernando Pessoa",
@@ -58,10 +79,28 @@
 					}
 				];
 
+				setInterval( () => {
+
+					/* este setInterval, decide se vai mostrar uma mensagem de um bot ou não
+					para isso vai gerar um numero aleatorio de 1 a 12
+					se for um de doze possibilidades (apenas uma serve)
+					por exemplo, se for 7 e apenas 7 é que aparece uma mensagem de um bot
+					*/
+
+					const randomNumber = Math.ceil(Math.random() * 12);
+					if(randomNumber === 7) {
+					
+						const randomBot = bots[ Math.floor(Math.random() * bots.length) ];
+						const randomMessage = randomBot.messages[
+							Math.floor(Math.random() * randomBot.messages.length)
+						];
+
+						writeMessage(randomBot.name, randomMessage);
+					}
+
+				}, 500);
+
 				form.addEventListener("submit", e => {
-					const datetime = new Date();
-					//const currenttime = "[" + datetime.getHours() +":"+ datetime.getMinutes() + ":" + datetime.getSeconds() + "]";
-					const currenttime = "[" +datetime.toLocaleTimeString("pt-PT")+ "]";
 
 					e.preventDefault();
 
@@ -72,38 +111,11 @@
 					   <dt>Vosso Nome</dt>
 					   <dd>[HH:MM:10] Mensagem</dd>
 					*/
-					
-					chatbox
-					.appendChild( document.createElement("dt") )
-					.textContent = username;
-					
-					chatbox
-					.appendChild( document.createElement("dd") )
-					.textContent = currenttime + " " + form.message.value;
+
+					writeMessage(username, form.message.value);
 
 					form.message.value = "";
 
-					/*
-					   exercício:
-					   apos utilizador escrever algo, um dos bots (escolhido aleatoriamente)
-					   responde com uma das suas mensagenas (também escolhidas aleatoriamente)
-					   
-					   <dt>Nome do Bot</dt>
-					   <dd>[HH:MM:10] Mensagem do Bot</dd>
-					*/
-					const randomBot = bots[ Math.floor(Math.random() * bots.length) ];
-
-					chatbox
-					.appendChild( document.createElement("dt") )
-					.textContent = randomBot.name;
-
-					const randomMessage = randomBot.messages[
-						Math.floor(Math.random() * randomBot.messages.length)
-					];
-
-					chatbox
-					.appendChild( document.createElement("dd") )
-					.textContent = currenttime + " " + randomMessage;
 				});
 			});
 		</script>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt">
+	<head>
+		<meta charset="utf-8">
+		<title>AJAX: invocação de ficheiro JSON local</title>
+		<script>
+			document.addEventListener("DOMContentLoaded", () => {
+
+				const list = document.getElementById("list");
+
+				fetch("./js30.json")
+				.then( response => response.json() )
+				.then( posts => {
+				
+					for(let post of posts) {
+					
+						list.appendChild( document.createElement("li") );
+						
+						list.lastElementChild.textContent = post.title;
+					
+					}
+				});
+			
+			});
+		</script>
+	</head>
+	<body>
+		<ul id="list"></ul>
+	</body>
+</html>
