@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt">
+	<head>
+		<meta charset="utf-8">
+		<title>Aplicação de Chat</title>
+		<script>
+			document.addEventListener("DOMContentLoaded", () => {
+				const username = "Ivo";
+				const form = document.querySelector("form");
+				const chatbox = document.getElementById("chatbox");
+
+				const bots = [
+					{
+						name: "Fernando Pessoa",
+						messages: [
+							"Nenhum livro para crianças deve ser escrito para crianças.",
+							"Todas as frases do livro da vida, se lidas até ao fim, terminam numa interrogação.",
+							"Livros são papéis pintados com tinta. Estudar é uma coisa em que está indistinta A distinção entre nada e coisa nenhuma.",
+							"Todo este universo é um livro em que cada um de nós é uma frase.",
+							"Duas coisas só me deu o Destino: uns livros de contabilidade e o dom de sonhar."
+						]
+					},
+					{
+						name: "Manuel Luis Goucha",
+						messages: [
+							"Levem lá comigo mais um dia",
+							"Muito menos, falsamente humilde."
+						]
+					},
+					{
+						name: "Jorge Jesus",
+						messages: [
+							"Os adeptos empulgam os jogadores, eles puxam pela equipa.",
+							"Querem fazer do rapaz o bode respiratório.",
+							"Não respondo a essa pergunta, porque isso é um assunto do forno interno do clube.",
+							"Vocês os quatro formem aí um triângulo.",
+							"Venham para junto dos pinos efervescentes.",
+							"Queria dedicar a vitória aos motocars da Amadora.",
+							"Isso dos estrangeiros não é um problema. Nós já estamos a tratar do processo de neutralização dos jogadores.",
+							"Agora vamos jogar esta eliminatória em Standard de Liège",
+							"Ainda dou-le a dúvida desse lance.",
+							"Quê que a gente vai fazer? Lutar como? Só se for na playstation. Na playstation eu consigo resolver isto."
+						]
+					},
+					{
+						name: "Paulo Futre",
+						messages: [
+							"Quando te dão uma caneta para assinares o primeiro autógrafo é como te darem uma pistola com cinco balas em seis buracos para jogares à roleta russa.",
+							"Senti que fui tão grande no Atlético de Madrid, o maior jogador da história do clube",
+							"Fui o maior e faria tudo igual. Nunca mais apareceu ninguém a cair como eu."
+						]
+					},
+					{
+						name: "Augusto Mungui",
+						messages: [
+							"Se não entendes nada a tua volta, não compreenderás as minhas lutas"
+						]
+					}
+				];
+
+				form.addEventListener("submit", e => {
+					const datetime = new Date();
+					//const currenttime = "[" + datetime.getHours() +":"+ datetime.getMinutes() + ":" + datetime.getSeconds() + "]";
+					const currenttime = "[" +datetime.toLocaleTimeString("pt-PT")+ "]";
+
+					e.preventDefault();
+
+					/* 
+					   cada vez que vocês digitarem um texto no form, vai ser inserido 
+					   na chatbox no seguinte formato:
+					   
+					   <dt>Vosso Nome</dt>
+					   <dd>[HH:MM:10] Mensagem</dd>
+					*/
+					
+					chatbox
+					.appendChild( document.createElement("dt") )
+					.textContent = username;
+					
+					chatbox
+					.appendChild( document.createElement("dd") )
+					.textContent = currenttime + " " + form.message.value;
+
+					form.message.value = "";
+
+					/*
+					   exercício:
+					   apos utilizador escrever algo, um dos bots (escolhido aleatoriamente)
+					   responde com uma das suas mensagenas (também escolhidas aleatoriamente)
+					   
+					   <dt>Nome do Bot</dt>
+					   <dd>[HH:MM:10] Mensagem do Bot</dd>
+					*/
+					const randomBot = bots[ Math.floor(Math.random() * bots.length) ];
+
+					chatbox
+					.appendChild( document.createElement("dt") )
+					.textContent = randomBot.name;
+
+					const randomMessage = randomBot.messages[
+						Math.floor(Math.random() * randomBot.messages.length)
+					];
+
+					chatbox
+					.appendChild( document.createElement("dd") )
+					.textContent = currenttime + " " + randomMessage;
+				});
+			});
+		</script>
+		<style>
+			#chatbox {
+				width: 95vw;
+				height: 85vh;
+				border: 1px solid #CCC;
+				padding: 4px 10px;
+				overflow: auto;
+			}
+		</style>
+	</head>
+	<body>
+		<main>
+			<dl id="chatbox"></dl>
+			<form method="post" action="js28.html">
+				<div>
+					<label>
+						Escreva algo
+						<input type="text" name="message" required>
+					</label>
+					<button type="submit">Enviar</button>
+				</div>
+			</form>
+		</main>
+	</body>
+</html>

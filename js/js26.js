@@ -33,11 +33,12 @@ for(let i = 0; i < chosenWord.length; i++) {
 	gameArea.lastElementChild.textContent = "_";
 }
 
-/* exercício:
+/* 
 criar código para gerir formulário, obter a letra escolhida pelo utilizador dentro de uma variavel
 */
 
 const form = document.querySelector("form");
+const attemptsDisplay = document.getElementById("attemptsDisplay");
 
 form.addEventListener("submit", function(event) {
 	
@@ -48,8 +49,6 @@ form.addEventListener("submit", function(event) {
 	form.letter.value = "";
 
 	console.log("letra do formulario", letterPicked);
-	
-	console.log("Tentativas antes de correr o ciclo", attemptsLeft);
 	
 	let isCorrect = false;
 
@@ -66,14 +65,20 @@ form.addEventListener("submit", function(event) {
 			gameArea.children[i].textContent = currentLetter;
 		}
 	}
-	
+
 	/*
 	cada vez que o utilizador não acertar em nenhum letra,
 	perde uma tentativa.
 	*/
 	if(isCorrect === false) {
 		attemptsLeft--;
+
+		attemptsDisplay.lastElementChild.textContent = attemptsLeft;
+
+		if(attemptsLeft === 0) {
+			alert("GAME OVER");
+			window.location.reload();
+		}
 	}
-	console.log("Tentativas depois de correr o ciclo", attemptsLeft);
 
 });
