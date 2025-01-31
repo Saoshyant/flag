@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt">
+	<head>
+		<meta charset="utf-8">
+		<title>AJAX a invocar backend (PHP)</title>
+		<script>
+			setInterval(() => {
+			
+				fetch("requests.php?request=auction")
+				.then( response => response.json() )
+				.then( result => {
+					
+					console.log(result);
+					
+					/* exercício: com o resultado da invocação de AJAX,
+					   mostrar na página os valores de timer e price actuais */
+					const timer = document.getElementById("timer");
+					const price = document.getElementById("price");
+					
+					timer.textContent = result.timer;
+					price.textContent = result.price;
+					
+					/* exercício: com isto feito, agora colocar
+					   a actualizar automaticamente a cada segundo que passa
+					   para fazer isto, criámos um setInterval a envolver o Fetch()
+					*/
+				});
+			
+			}, 1000);
+		</script>
+	</head>
+	<body>
+		<h1>Leilão de Ultra Artigo</h1>
+		<dl>
+			<dt>Tempo que falta</dt>
+			<dd id="timer"></dd>
+			<dt>Licitação actual</dt>
+			<dd id="price"></dd>
+		</dl>
+	</body>
+</html>
