@@ -46,6 +46,18 @@
         </style>
 		<script>
 			document.addEventListener("DOMContentLoaded", () => {
+				
+				function calculateTotal() {
+
+					let total = 0;
+					const subtotals = document.querySelectorAll(".subtotal");
+					for(let subtotal of subtotals) {
+						
+						total = total + Number(subtotal.textContent);
+					}
+
+					document.getElementById("total").textContent = total.toFixed(2);
+				}
 
 				const buttons = document.querySelectorAll("td button");
 
@@ -54,8 +66,6 @@
 					button.addEventListener("click", () => {
 						
 						const tr = button.parentElement.parentElement;
-						
-						console.log( tr.dataset.product_id );
 
 						fetch("requests.php", {
 							method: "POST",
@@ -65,23 +75,24 @@
 							body: "request=removeProduct&product_id=" + tr.dataset.product_id
 						})
 						.then( response => response.json() )
-						.then( result => tr.remove() );
+						.then( result => {
+							tr.remove();
+
+							calculateTotal();
+						});
 
 					});
 				}
 
-				/* exercício: obter todos os campos de quantidade na página,
+				/* obter todos os campos de quantidade na página,
 				   e aplicar controlo de evento de "change" a cada um deles
 				   para obter assim o valor após alteração do campo
-				   
-				   mostrar na consola o "value" desse campo alterado 
 				*/
 				const inputs = document.querySelectorAll('td input[name="quantity"]');
 
 				for(let input of inputs) {
 					
 					input.addEventListener("change", () => {
-						console.log( input.value );
 						
 						const tr = input.parentElement.parentElement;
 						const product_id = tr.dataset.product_id;
@@ -95,9 +106,12 @@
 						})
 						.then( response => response.json() )
 						.then( result => {
+
+							const subtotal = (input.value * tr.dataset.price).toFixed(2);
 							
-							console.log( input.value * tr.dataset.price );
-							
+							tr.children[3].firstElementChild.textContent = subtotal;
+
+							calculateTotal();
 						});
 					});
 				}
@@ -139,7 +153,7 @@
 					</td>
                     <td>' .$item["price"]. '€</td>
                     <td>
-						<span>' .$subtotal. '</span>€
+						<span class="subtotal">' .$subtotal. '</span>€
 					</td>
 					<td>
 						<button type="button">X</button>
@@ -150,7 +164,7 @@
 ?>
             <tr>
                 <td colspan="3"></td>
-                <td colspan="2"><?php echo $total; ?>€</td>
+                <td colspan="2"><span id="total"><?php echo $total; ?></span>€</td>
             </tr>
         </table>
 <?php

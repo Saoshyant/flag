@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt">
+	<head>
+		<meta charset="utf-8">
+		<title>Canvas: Linhas</title>
+		<script>
+			document.addEventListener("DOMContentLoaded", () => {
+			
+				const canvas = document.querySelector("canvas").getContext("2d");
+
+				canvas.beginPath();
+				
+				canvas.lineWidth = 1;
+
+				/*canvas.moveTo(300, 300);
+
+				canvas.lineTo(400, 300);
+				
+				canvas.moveTo(600, 600);
+				
+				canvas.lineTo(600, 800);*/
+				
+				/* exercício: desenhar um triangulo,
+				   criando mais duas linhas em cima de uma das linhas existentes */
+
+				/*canvas.moveTo(400, 300);
+				
+				canvas.lineTo(350, 200);
+				
+				canvas.lineTo(300, 300);
+				
+				canvas.moveTo(600, 800);
+				
+				canvas.lineTo(400, 700);
+				
+				canvas.lineTo(600, 600);*/
+
+
+				
+				/* novo exercício: criar a grelha do jogo do galo (duas linhas horizontais, duas linhas verticais), mais o X no centro (primeira jogada), pintar o X de vermelho */
+				
+				canvas.moveTo(0, 300);
+
+				canvas.lineTo(900, 300);
+
+				canvas.moveTo(0, 600);
+				
+				canvas.lineTo(900, 600);
+
+				canvas.moveTo(300, 0);
+
+				canvas.lineTo(300, 900);
+
+				canvas.moveTo(600, 0);
+				canvas.lineTo(600, 900);
+				
+				canvas.stroke();
+				
+				canvas.beginPath();
+				
+				canvas.strokeStyle = "#F00";
+
+				canvas.moveTo(350, 350);
+				canvas.lineTo(550, 550);
+				
+				canvas.moveTo(550, 350);
+				canvas.lineTo(350, 550);
+
+				canvas.stroke();
+			});
+		</script>
+		<style>
+			canvas { outline: 1px solid red;}
+		</style>
+	</head>
+	<body>
+		<canvas width="900" height="900"></canvas>
+	</body>
+</html>
