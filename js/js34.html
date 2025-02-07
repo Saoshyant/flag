@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt">
+	<head>
+		<meta charset="utf-8">
+		<title>Canvas: Circunferências</title>
+		<script>
+			document.addEventListener("DOMContentLoaded", () => {
+
+				const canvas = document.querySelector("canvas").getContext("2d");
+				
+				const addBtn = document.getElementById("addBtn");
+				
+				const circles = [
+					{
+						x: 30,
+						y: 40,
+						dx: 5,
+						dy: 5,
+						color: "#00F",
+						r: 15
+					},
+					{
+						x: 60,
+						y: 420,
+						dx: 4,
+						dy: 4,
+						color: "#060",
+						r: 25
+					},
+					{
+						x: 160,
+						y: 220,
+						dx: 3,
+						dy: 6,
+						color: "#F00",
+						r: 20
+					}
+				];
+
+				setInterval(() => {
+
+					canvas.clearRect(0, 0, 900, 900);
+
+					for(let i = 0; i < circles.length; i++) {
+						canvas.beginPath();
+
+						canvas.fillStyle = circles[i].color;
+
+						canvas.arc(circles[i].x, circles[i].y, circles[i].r, 0, Math.PI * 2);
+
+						canvas.fill();
+
+						if(circles[i].x <= 0 || circles[i].x >= 900) {
+							circles[i].dx = -circles[i].dx;
+						}
+
+						if(circles[i].y <= 0 || circles[i].y >= 900) {
+							circles[i].dy = -circles[i].dy;
+						}
+
+						circles[i].x += circles[i].dx;
+						circles[i].y += circles[i].dy;
+					}
+				
+				}, 1);
+
+				function random(max) {
+					return Math.ceil(Math.random() * max);
+				}
+
+				addBtn.addEventListener("click", () => {
+
+					circles.push(
+						{
+							x: random(900),
+							y: random(900),
+							dx: random(15),
+							dy: random(15),
+							color: "rgb(" +random(255)+ ", " +random(255)+ ", " +random(255)+ ")",
+							r: random(30)
+						}
+					);
+				});
+
+			});
+		</script>
+		<style>
+			canvas { outline: 1px solid red; }
+		</style>
+	</head>
+	<body>
+		<div>
+			<canvas width="900" height="900"></canvas>
+		</div>
+		<div>
+			<button type="button" id="addBtn">Adicionar Bola</button>
+			<!--
+			   exercício:
+			   quando se clica no botão é acrescentado ao array de bolas uma nova 
+			   com valores aleatorios em todas as propriedades (x, y, r, color, dx, dy)
+			   
+			   passos:
+			   1) aplicar evento de clique
+			   2) fazer o push para dentro do array de uma bola cujos valores iniciais são fixos
+			   3) posteriormente, aplicar a aleatoridade a cada uma das propriedades
+			-->
+		</div>
+	</body>
+</html>
