@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt">
+	<head>
+		<meta charset="utf-8">
+		<title>Canvas: Jogo do Snake</title>
+		<script>
+			document.addEventListener("DOMContentLoaded", () => {
+			
+				const canvas = document.querySelector("canvas");
+				const canvasCtx = canvas.getContext("2d");
+
+				const groundImg = new Image();
+				groundImg.src = "img/ground.png";
+
+				setTimeout(() => {
+
+					canvasCtx.drawImage(groundImg, 0, 0);
+				
+				}, 100);
+				
+			});
+		</script>
+	</head>
+	<body>
+		<canvas width="608" height="608"></canvas>
+	</body>
+</html>
