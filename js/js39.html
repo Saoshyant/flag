@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt">
+	<head>
+		<meta charset="utf-8">
+		<title>Jogo do Galo</title>
+		<style>
+			main {
+				max-width: 980px;
+				margin: 0 auto;
+			}
+
+			#scoreBoard {
+				display: flex;
+				justify-content: space-between;
+			}
+
+			main div {
+				display: flex;
+			}
+
+			main div button {
+				width: 30vw;
+				min-height: 20vh;
+				border: 1px solid #CCC;
+				font-size: 6vw;
+				cursor: pointer;
+			}
+		</style>
+		<script>
+			document.addEventListener("DOMContentLoaded", function() {
+				const buttons = document.getElementsByTagName("button");
+				
+				let currentSymbol = "X";
+
+				const score = {
+					X: 0,
+					O: 0
+				}
+
+				function updateScore() {
+					alert("Terminou.  Ganhou " + currentSymbol);
+
+					// aumentar pontuação de quem ganhou
+					score[currentSymbol]++;
+					
+					// mostrar na página
+					document.getElementById(currentSymbol).textContent = score[currentSymbol];
+
+					// fazer a limpeza da area de jogo
+					for(let i = 0; i < buttons.length; i++) {
+						buttons[i].textContent = "";
+					}
+					currentSymbol = "";
+				}
+
+				function checkGameOver() {
+				
+					const lines = [
+						[0, 1, 2],
+						[3, 4, 5],
+						[6, 7, 8],
+						[0, 3, 6],
+						[1, 4, 7],
+						[2, 5, 8],
+						[0, 4, 8],
+						[2, 4, 6]
+					];
+
+					/* exercício:
+						passar a ter só um IF dinamico para as 8 possibilidades de vitoria
+						para isso, é necessário criar um ciclo por cada uma delas
+						e desconstruir cada possibilidade em três variáveis para uso no IF
+					*/
+					for(let line of lines) {
+					
+						const [a, b, c] = line;
+						
+						if(
+							buttons[a].textContent !== "" &&
+							buttons[a].textContent === buttons[b].textContent &&
+							buttons[a].textContent === buttons[c].textContent
+						) {
+							updateScore();
+						}
+					}
+				}
+
+				for(let i = 0; i < buttons.length; i++) {
+
+					buttons[i].addEventListener("click", function() {
+
+						if(buttons[i].textContent === "") {
+							buttons[i].textContent = currentSymbol;
+
+							checkGameOver();
+
+							if(currentSymbol === "X") {
+								currentSymbol = "O";
+							}
+							else {
+								currentSymbol = "X";
+							}
+						}
+
+						//buttons[i].disabled = true;
+					});
+				}
+			});
+		</script>
+	</head>
+	<body>
+		<main>
+			<dl id="scoreBoard">
+				<dt>X venceu</dt>
+				<dd id="X">0</dd>
+				<dt>O venceu</dt>
+				<dd id="O">0</dd>
+			</dl>
+			<div>
+				<button type="button"></button>
+				<button type="button"></button>
+				<button type="button"></button>
+			</div>
+			<div>
+				<button type="button"></button>
+				<button type="button"></button>
+				<button type="button"></button>
+			</div>
+			<div>
+				<button type="button"></button>
+				<button type="button"></button>
+				<button type="button"></button>
+			</div>
+		</main>
+	</body>
+</html>

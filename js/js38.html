@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt">
+	<head>
+		<meta charset="utf-8">
+		<title>Destructors</title>
+		<script>
+			const countries = ["Portugal", "Brasil", "Canadá", "Mexico"];
+
+			const [whereAmI] = countries;  // const whereAmI = countries[0];
+			
+			console.log(whereAmI);
+			
+			const superHero = {
+				name: "Spider-Man",
+				power: "Agility and super strength",
+				secretIdentity: "Peter Parker"
+			}
+			
+			console.log( superHero.name, superHero.power );
+			
+			const { name, power } = superHero;
+			
+			console.log(name, power);
+			
+			const users = [
+				{
+					name: "Mariana",
+					age: 29,
+					hobbies: ["Ski", "Karaoke"]
+				},
+				{
+					name: "Mário",
+					age: 23,
+					hobbies: ["Natação", "Fortnite"]
+				}
+			];
+			
+			/* exercício:
+			   criar variavel "marianaHobbies" e variavel "marioHobbies" com a extração dos hobbies de cada um deles
+			*/
+
+			const [mariana, mario] = users;
+			const { hobbies: marianaHobbies } = mariana;
+			const { hobbies: marioHobbies } = mario;
+
+			console.log("Hobbies da Mariana", marianaHobbies);
+			console.log("Hobbies do Mário", marioHobbies);
+		</script>
+	</head>
+	<body>
+	</body>
+</html>
