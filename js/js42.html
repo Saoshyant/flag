@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt">
+	<head>
+		<meta charset="utf-8">
+		<title>Classes</title>
+		<script>
+			/* isto é um objecto simples, só existe uma única instância dele */
+			const superHero = {
+				name: "Spider-Man",
+				powerLevel: 100,
+				saveTheDay: function() {
+					this.powerLevel -= 20;
+				}
+			}
+
+			superHero.saveTheDay();
+			superHero.saveTheDay();
+			superHero.saveTheDay();
+			
+			console.log( superHero.powerLevel );
+
+			/* isto é um objecto não simples, como classe, pode ser instanciada
+			   multiplas vezes e cada instancia vive uma realidade separada das outras */
+			class SuperHero {
+
+				name = "Generic Super Hero";
+				powerLevel = 100;
+
+				/* o constructor é algo que se activa automaticamente
+				   sempre que for gerada uma nova instancia */
+				constructor(newName) {
+					if(newName) {
+						this.name = newName;
+					}
+				}
+				
+				saveTheDay() {
+					this.powerLevel -= 20;
+				}
+			}
+
+			/* as instancias são criadas com a keyword "new" */
+			const spiderMan = new SuperHero("Spider-Man");
+			const venom = new SuperHero("Venom");
+			const batMan = new SuperHero("Batman");
+			const generic = new SuperHero();
+			
+			console.log(spiderMan.name, spiderMan.powerLevel);
+			console.log(batMan.name, batMan.powerLevel);
+			
+			spiderMan.saveTheDay();
+			spiderMan.saveTheDay();
+
+			/* como instancias diferentes, cada uma guarda um "powerLevel" diferente */
+			console.log(spiderMan.name, spiderMan.powerLevel);
+			console.log(batMan.name, batMan.powerLevel);
+		</script>
+	</head>
+	<body>
+	</body>
+</html>
