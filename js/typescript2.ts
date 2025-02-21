@@ -11,5 +11,3 @@ const usernames: string[] = [];
 
 usernames.push("Filomena");
 usernames.push("Carlos");
-
-
