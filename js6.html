@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Fundamentos de Programação: Repetir Acções</title>
+        <script>
+            let i = 1;
+            while(i <= 10) {
+                console.log("Isto está a acontecer");
+                
+                i = i + 1;
+            }
+
+            /* exercício: criar variavel X e mostrar os números de 1 a 100 */
+            let x = 1;
+            while(x <= 100) {
+                console.log(x);
+
+                x = x + 1;
+            }
+
+            /* exercício: criar variavel Y e mostrar os numeros de 0 a 200, mas de dois em dois */
+            let y = 0;
+            while(y <= 200) {
+                console.log(y);
+
+                y = y + 2;
+            }
+
+            /* exercício: criar ciclo que mostra os numeros de 100 a 1, ou seja, por ordem decrescente terminando no 1 */
+            let z = 100;
+            while(z >= 1) {
+                console.log(z);
+
+                z = z - 1; // z--
+            }
+
+            const countries = ["Portugal", "Brasil", "Angola", "Moçambique", "Cabo Verde", "São Tomé e Principe", "Guiné-Bissau", "Timor-Leste"];
+
+            /* exercício: mostrar todos os países um a um na consola, usando um ciclo */
+            let index = 0;
+            while(index < 8) {
+                console.log( index, countries[index] );
+
+                index++;
+            }
+        </script>
+    </head>
+    <body>
+        
+    </body>
+</html>

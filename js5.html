@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Fundamentos de Programação: Guardar Múltiplas coisas</title>
+        <script>
+            const animal1 = "Zebra";
+            const animal2 = "Lince";
+            const animal3 = "Gato";
+            const animal4 = "Papagaio";
+
+            /* como o de cima é extremamente ineficiente, temos que usar uma estrutura de dados para guardar multiplas coisas */
+
+            const animals = ["Zebra", "Lince", "Gato", "Papagaio", "Cavalo", "Aguia", "Lobo", "Macaco", "Trump"];
+
+            console.log(animals);
+            console.log(animals[0]);
+            console.log(animals[1]);
+            console.log(animals[2]);
+            console.log(animals[3]);
+
+            console.log( animals[ animals.length-1 ] );
+
+            /* fazer o exercício dos paises lusofunos, mas usando um array em vez de uma unica string */
+            const countries = ["Brasil", "Portugal"];
+            if( countries[0] == "Portugal" || countries[1] == "Brasil" || countries[0] == "Brasil" || countries[1] == "Portugal") {
+                console.log("É um país lusófono");
+            }
+        </script>
+    </head>
+    <body>
+        
+    </body>
+</html>

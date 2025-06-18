@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="pt">
+	<head>
+		<meta charset="utf-8">
+		<title>Fundamento de Programação: Funções</title>
+		<script>
+			/* função é um pedaço de código reutilizavel
+			
+			   a ideia é não ter que voltar a duplicar codigo quando
+			   precisar de usar uma funcionalidade que já tinha
+			   anteriormente criado
+			   
+			   para trabalhar com uma função existem duas etapas:
+			   1) declaração da função 
+			   2) invocação da função
+			*/
+			
+			function fazCoisas() {
+				console.log("estou a fazer coisas");
+			}
+			
+			/* uma função quantas vezes quisermos */
+			fazCoisas();
+			fazCoisas();
+			fazCoisas();
+			fazCoisas();
+
+			/* uma função pode receber argumentos, ou seja, coisas que venham de fora */
+			function addThree(number) {
+				console.log( number + 3);
+			}
+			
+			addThree(7);  // 10
+			addThree(14); // 17
+
+			/* podemos colocar multiplos argumentos se for necessário, separar com virgula */
+			function sum(x, y) {
+				console.log(x + y);
+			}
+			
+			sum(40, 20);
+			sum(15, 15);
+			sum(5, 1);
+
+			/* exercício:
+			   criar função que recebe uma lista de nomes de utilizadores
+			   por cada utilizador, mostrar na consola o seu nome após invocação da função
+			*/
+			function listUsers(users) {
+				let i = 0;
+				
+				while(i < users.length ) {
+				
+					console.log(users[i]);
+					
+					i++;
+				}
+			}
+			
+			listUsers( ["Ana", "Diogo", "César"] );
+			listUsers( ["Leonardo", "Donatelo", "Rafael", "Miguel Angelo"] );
+			// nesta invocação vão aparecer estes três nomes na consola, um de cada vez
+			
+			/* exercício:
+			   criar função que vai dizer quais são os números maiores que 10
+			   recebe uma lista de numeros como input (argumento)
+			   faz output a informar quando encontrou um numero maior que 10
+			*/
+			function moreThanTen( numbers ) {
+
+				let i = 0;
+				while( i < numbers.length ) {
+				
+					// validar número a número
+					if(numbers[i] > 10) {
+						console.log("Encontrei um número maior que 10: " + numbers[i]);
+					}
+
+					i++;
+				}
+			}
+			
+			moreThanTen( [40, 30, 10, 2, 3, 5, 6, 8, 9, 2, 0, -12, 15] );
+			moreThanTen( [1, 2, 3, 100, 200] );
+
+			/* exercício:
+			   criar uma função que recebe uma lista de cidades
+			   quando chegar ao fim (ultima cidade da lista), diz, "cheguei ao destino que é X"
+			   enquanto não chegar ao destino, ir dizendo "estou a atravessar Cidade Y"
+			*/
+			
+			function travel(cities) {
+				let i = 0;
+				
+				while(i < cities.length) {
+					
+					if( i === cities.length - 1 ) {
+						console.log("Cheguei ao destino que é " + cities[i]);
+					}
+					else {
+						console.log("Estou a atravessar " + cities[i]);
+					}
+					
+					/*
+					if( i < cities.length - 1 ) {
+						console.log("Estou a atravessar " + cities[i]);
+					}
+					else {
+						console.log("Cheguei ao destino que é " + cities[i]);
+					}
+					*/
+				
+					i++;
+				}
+			}
+
+			travel(["Lisboa", "Portalegre", "Viseu", "Bragança", "Guarda"]);
+			travel(["New York City", "New Mexico", "Washington DC", "Dallas", "Seattle"]);
+			
+			// quando invocada a função mostra dois tipos de mensagem:
+			// ex: "estou a atravessar Viseu"
+			// quando chegar ao fim da lista, "cheguei ao destino que é Guarda"
+			
+			/* exercício:
+			   criar função que detecta qual o número menor entre dois números
+			   esta função recebe dois argumentos
+			   e diz qual o numero menor entre ambos
+			   e se não houver um numero menor (porque ambos são iguais), informar o utilizador
+			*/
+			function minOfTwo(x, y) {
+				if(x < y) {
+					console.log(x);
+				}
+
+				if(y < x) {
+					console.log(y);
+				}
+
+				if(x === y) {
+					console.log("ambos são iguais");
+				}
+			}
+			
+			minOfTwo(20, 10);
+			minOfTwo(5, 15);
+			minOfTwo(17, 17);
+
+			/* exercício final:
+			   criar uma função que detecta o número menor uma lista de números 
+			   necessário testar número a número para ir confirmando qual o menor 
+			   no final informar qual o número que realmente era o menor
+			*/
+			
+			function min(numbers) {
+				let i = 0;
+				
+				let lowest = numbers[0];
+				
+				while(i < numbers.length) {
+				
+					if(numbers[i] < lowest ) {
+						lowest = numbers[i];
+					}
+				
+					i++;
+				}
+				
+				console.log( lowest );
+			}
+			
+			
+			min( [100, 200, 300, 4, 6, 10, 18, 20, 1, 50] ); // 1
+			min( [40, 2, 30, 10, 40, 50, 20, 10, 5, 29, 3] ); // 2
+			min( [-3, 40, 2, 30, 10, 40, 50, 20, 10, 5, 29, 3] ); // -3
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

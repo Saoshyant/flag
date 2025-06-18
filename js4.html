@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Fundamentos de Programação: Condições</title>
+        <script>
+            const age = 18;
+
+            //se algo for assim (condição), faz o seguinte (o necessário)
+            if(age > 17) {
+                console.log("Tens idade para votar");
+            }
+            
+            if(age < 18) {
+                console.log("Não tens idade para votar!");
+            }
+
+            let name = "Alice";
+
+            if(name === "Ana") {
+                console.log("Realmente é a Ana");
+            }
+
+            if(name !== "Ana") {
+                console.log("Não és a Ana! És @ " + name);
+            }
+
+            /* exercício, validar a temperatura actual:
+            se estiver acima de 30º, dizer "está muito quente!"
+            se estiver acima de 16º, dizer "está um tempo fixe"
+            se estiver exactamente ou abaixo de 16º, dizer "está frio como o raio"
+            limitação: criar uma única variável (temperatura actual)
+            limitação: só existe o uso do comando IF simples (mais nada)
+            limitação: e não é possível usar operadores de conjugar multiplas condições
+            */
+
+            const currentWeather = 40;
+            
+            if(currentWeather > 16) {
+
+                if(currentWeather > 30) {
+                    console.log("Está muito quente!");
+                }
+
+                if(currentWeather <= 30) {
+                    console.log("Está um tempo fixe");
+                }
+            }
+
+            if(currentWeather <= 16) {
+                console.log("Está frio como o raio");
+            }
+            
+
+            if(currentWeather > 30) {
+                console.log("Está muito quente!");
+            }
+
+            if(currentWeather > 16 && currentWeather <= 30) {
+                console.log("Está um tempo fixe");
+            }
+
+            if(currentWeather > 16 || currentWeather <= 30) {
+                console.log("Está um tempo fixe");
+            }
+
+            if(currentWeather <= 16) {
+                console.log("Está frio como o raio");
+            }
+
+            const country = "Italia";
+
+            if(
+                country == "Brasil" ||
+                country == "Portugal"
+            ) {
+                console.log(country, "país é lusófono");
+            }
+            //if( country != "Brasil" && country != "Portugal") {
+            else {
+                console.log(country, "este país não é lusófono");
+            }
+
+            const idiot = "Alberto";
+            const job = "Canalizador"; //"Canalizador";
+            const wage = 600; // 2000;
+/* caso a pessoa seja o Miguel (e apenas o Miguel usando o AND && para garantir isso)
+   e seja Professor ou (OR ||) tenha um ordernado <= 600
+	escrever, "tás lixado" */
+            if( idiot == "Miguel" && (job == "Professor" || wage <= 600) ) {
+                console.log("Tás lixado!");
+            }
+        </script>
+    </head>
+    <body>
+        
+    </body>
+</html>
