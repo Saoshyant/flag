@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt">
+	<head>
+		<meta charset="utf-8">
+		<title>Fundamentos de Programação: Objectos</title>
+		<script>
+			/* objecto é uma estrutura de dados complexa que permite guardar dentro de si multiplas variaveis e funções */
+			
+			const text = "cenas e tal";
+			
+			console.log( text, text.length, text.toUpperCase() );
+			
+			/* quando um objecto contem variaveis e funções, chamam-se respectivamente "propriedades" e "métodos" desse objecto */
+
+			const pen = {
+				ink: 100, // propriedade, comporta-se como se fosse uma variável dentro desta estrutura
+				covered: true,
+				setCover: function() {
+					// qualquer referencia ao objecto em si DENTRO dele vai usar sempre a keyword especial "this"
+					this.covered = false;
+				},
+				write: function() {
+					/* exercício:
+					   não permitir a escrita (ou seja, gastar tinta) se a caneta ainda estiver tapada
+					*/
+					if( this.covered === false ) {
+						this.ink = this.ink - 5;
+					}
+				}
+			};
+
+			console.log( pen.ink );
+			
+			pen.ink = 80;
+
+			console.log( pen.ink, pen.covered );
+			
+			pen.setCover();
+			
+			console.log( pen.covered );
+			
+			pen.write();
+			pen.write();
+			pen.write();
+			pen.write();
+			
+			console.log( pen.ink );
+			
+			/* exercício:
+			   criar um super heroi como um objecto simples
+			   tem um nome, uma identidade secreta e um super poder
+			   tem energia (life points) e cada vez que leva porrada, perde energia
+			*/
+			const spiderMan = {
+				name: "Homem-Aranha",
+				secretIdentity: "Peter Parker",
+				superPower: "Força e agilidade proporcional a uma aranha",
+				lifePoints: 100,
+				takeDamage: function() {
+					this.lifePoints = this.lifePoints - 20;
+				}
+			}
+
+			/* se precisar de criar outro super heroi, com objectos simples,
+			   vou ter que duplicar o codigo todo de cima, o que é problemático */
+			const batman = {
+				name: "Batman",
+				secretIdentity: "Bruce Wayne",
+				superPower: "Melhor detective do mundo",
+				lifePoints: 100,
+				takeDamage: function() {
+					this.lifePoints = this.lifePoints - 20;
+				}
+			}
+			
+			/* convenções de nomenclatura (ou como dar nomes a coisas com mais que uma palavra):
+			secret_identity: snake_case
+			secretIdentity: camelCase  _/\/\
+			SecretIdentity: PascalCase
+			*/
+
+			/* uma classe é um objecto complexo que pode ser reutilizado em multiplas instâncias,
+			   serve quando precisamos de criar código muito modular e reutilizavel em projectos de larga dimensão */
+			class SuperHero
+			{
+				name = "";
+				secretIdentity = "";
+				superPower = "";
+				lifePoints = 100;
+				
+				/* quando uma classe arranca (criada uma instância) podemos opcional auto executar algo
+				   isto tem o nome de "constructor"
+				*/
+				constructor(name, identity, power) {
+					this.name = name;
+					this.secretIdentity = identity;
+					this.superPower = power;
+				}
+
+				takeDamage() {
+					this.lifePoints = this.lifePoints - 20;
+				}
+			}
+
+			/* a classe em si não faz nada sozinha, fica a aguardar que sejam criadas instâncias dela */
+			const wonderWoman = new SuperHero("Wonder Woman", "Diana", "Voa, super-força e tem um laço mágico");
+			
+			const ironMan = new SuperHero("Iron Man", "Tony Stark", "Armadura super avançada");
+			
+			const hulk = new SuperHero("Hulk", "Bruce Banner", "Verde, super força");
+
+			ironMan.takeDamage();
+			ironMan.takeDamage();
+			ironMan.takeDamage();
+			hulk.takeDamage();
+			
+			console.log("Wonder Woman:", wonderWoman.lifePoints, wonderWoman.name, wonderWoman.superPower );
+			console.log("Iron Man:", ironMan.lifePoints, ironMan.name, ironMan.superPower );
+			console.log("Hulk:", hulk.lifePoints, hulk.name, hulk.superPower );
+			
+			/*
+			   exercício:
+			   criar uma classe para fazer Canetas, implementar tudo o que fizemos no objecto simples "pen" mas agora em formato classe
+			   criar depois uma instância dessa classe com o nome "bic"
+			*/
+			class Pen
+			{
+				ink = 100;
+				covered = true;
+
+				setCover() {
+					this.covered = !this.covered; // aplicando um ! antes da variavel estamos a forçar o seu contrário
+				}
+				
+				write() {
+					if( this.covered === false ) {
+						this.ink = this.ink - 5;
+					}
+				}
+			}
+		</script>
+	</head>
+	<body>
+	</body>
+</html>
