@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt">
+	<head>
+		<meta charset="utf-8">
+		<title>Alterar Estilização de HTML</title>
+		<script>
+			document.addEventListener("DOMContentLoaded", function() {
+
+				const first = document.getElementById("first");
+				const second = document.getElementById("second");
+				const third = document.getElementById("third");
+
+				first.style.color = "#F00";
+				first.style.textAlign = "right";
+				
+				/* exercício
+				 pegar no "second" e aplicar um tamanho de texto a 130%, sublinhar o texto e colocar a verde escuro
+				*/
+				second.style.fontSize = "130%";
+				second.style.textDecoration = "underline";
+				second.style.color = "#060";
+
+				third.classList.add("cute-background");
+			});
+		</script>
+		<style>
+			.cute-background {
+				background: url('https://upload.wikimedia.org/wikipedia/commons/6/65/Cute_beagle_puppy_lilly.jpg') no-repeat;
+			}
+		</style>
+	</head>
+	<body>
+		<p id="first">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam condimentum turpis diam, eu eleifend tellus gravida ac. Nam placerat at nibh id egestas. Praesent ut ipsum posuere lacus sodales faucibus. Nullam varius fermentum arcu et interdum. Aliquam convallis elit dui, in interdum odio commodo a. Vivamus suscipit leo ut rutrum tempor. Nunc tempor eros non placerat consectetur.</p>
+		<p id="second">Nulla id turpis pulvinar, sodales dolor ac, vestibulum est. Donec sapien orci, elementum eu ultricies id, sollicitudin in dui. Integer posuere massa et tortor fringilla, vitae mattis dolor condimentum. Maecenas consequat pharetra ipsum, ac tincidunt ante dapibus eget. Sed convallis finibus eros, ut placerat orci ornare non. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Mauris accumsan fermentum scelerisque. Fusce consequat lorem in elit viverra vulputate.</p>
+		<p id="third">Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...</p>
+	</body>
+</html>

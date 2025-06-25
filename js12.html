@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt">
+	<head>
+		<meta charset="utf-8">
+		<title>Introdução a Eventos: Evento de Clique</title>
+		<script>
+			document.addEventListener("DOMContentLoaded", function() {
+				const btn = document.getElementById("btn");
+				const puppy = document.getElementById("puppy");
+
+				btn.addEventListener("click", function() {
+
+					console.log("funca");
+					
+					/* exercício:
+					
+					   aumentou a complexidade: o botão tem agora que alternar entre esconder e mostrar a imagem
+					   ou seja, o display muda de "none" para "inline" e vice-versa
+					*/
+					if( puppy.style.display === "none" ) {
+						puppy.style.display = "inline";
+						//btn.textContent = "Esconde";
+					}
+					else {
+						puppy.style.display = "none";
+						//btn.textContent = "Mostrar";
+					}
+				});
+
+			});
+		</script>
+	</head>
+	<body>
+		<div>
+			<button id="btn" type="button">Esconde / Mostrar</button>
+		</div>
+		<div>
+			<img id="puppy" src="https://media1.popsugar-assets.com/files/thumbor/fye8fGVUpM_dn9U6CgtVgdZ5iEo=/0x176:1567x999/fit-in/1567x1175/top/filters:format_auto():quality(85):upscale()/2020/07/07/499/n/44054896/b5b455805f0455a95709e4.58972830_.jpg" alt="">
+		</div>
+	</body>
+</html>

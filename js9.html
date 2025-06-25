@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt">
+	<head>
+		<meta charset="utf-8">
+		<title>JavaScript: Interagir com Documento</title>
+		<script>
+			// window.onload = function() {}  # esta era uma técnica antiga para esperar que tudo no browser acabe de carregar
+			
+			/* técnica moderna para aguardar que o documento carregue: */
+			document.addEventListener("DOMContentLoaded", function() {
+		
+				const cenas = document.getElementById("cenas");
+				console.log( cenas );
+			
+				const title = document.getElementById("title");
+				console.log( title );
+				
+				console.log( cenas.textContent );
+				console.log( title.textContent );
+				
+				title.textContent = "Título Alterado";
+			});
+		</script>
+		<!-- terceira técnica para aguardar que o documento carregue mas só funciona para ficheiros de JS externos,
+		     colocar o "defer", neste exemplo, existe um "ficheiro.js" no mesmo directório do HTML -->
+		<!-- <script src="ficheiro.js" defer></script> -->
+	</head>
+	<body>
+		<h1 id="title">Título desta página</h1>
+		<div id="cenas">Cenas e Coisas e Tal</div>
+		
+		<!-- quarta técnica para aguardar que o documento acabe de carregar:
+		    enfiar todo o codigo de JS no final do BODY (imediatamente antes deste fechar)
+			será o correcto a fazer??
+		-->
+	</body>
+</html>

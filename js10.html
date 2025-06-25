@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt">
+	<head>
+		<meta charset="utf-8">
+		<title>Manipulação de Atributos de HTML</title>
+		<script>
+			/* exercício: selecionar o elemento IMG para dentro de uma variável
+			   fazer todos os passos e alterações que acharem necessários
+			*/
+			
+			document.addEventListener("DOMContentLoaded", function() {
+			
+				const puppy = document.getElementById("puppy");
+				
+				console.log( puppy.src );
+				
+				puppy.src = "https://www.woodlandkennel.com/wp-content/uploads/2013/09/20160722_195202.jpg";
+				puppy.alt = "English Springer Spaniel";
+
+				const link = document.getElementById("link");
+				
+				console.log( link );
+				console.log( link.href );
+				console.log( link.rel );
+				console.log( link.textContent );
+				
+				link.href = "https://tsf.pt";
+				link.textContent = "Link para TSF";
+			});
+		</script>
+	</head>
+	<body>
+		<div>
+			<a id="link" rel="external" href="https://bbc.com">Link para BBC</a>
+		</div>
+		<div>
+			<img id="puppy" src="https://upload.wikimedia.org/wikipedia/commons/6/65/Cute_beagle_puppy_lilly.jpg" alt="Beagle">
+		</div>
+	</body>
+</html>
