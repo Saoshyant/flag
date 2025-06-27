@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt">
+	<head>
+		<meta charset="utf-8">
+		<title>Aplicar um Evento a Múltiplos Elementos de HTML</title>
+		<script>
+			document.addEventListener("DOMContentLoaded", function() {
+
+				const listItems = document.getElementsByTagName("li");
+				const buttons = document.getElementsByTagName("button");
+				
+				/* selecionando multiplos elementos de HTML vai ser sempre gerado um Array
+				   para eu poder aplicar um evento a multiplos de HTML, vou ter que iterar o Array onde estão incluidos
+				   ou seja, utilizar um ciclo para aplicar individualmente o nosso eventListener
+				*/
+				
+				let i = 0;
+				while(i < listItems.length) {
+
+					listItems[i].addEventListener("click", function() {
+						console.log( this.textContent );
+					});
+
+					i++;
+				}
+
+				/* ciclos tradicionais como o WHILE também tem uma variante mais simples de escrever que é o FOR
+				
+				   o FOR utiliza exactamente os mesmos conceitos que o WHILE
+				   1) inicio do nosso iterador
+				   2) condição a correr até eventualmente terminar
+				   3) alguma maneira de chegar ao fim, normalmente incrementar de um em um
+				   
+				   um FOR tem uma diferença importante em relação ao WHILE:
+				   a variavel de controlo da iteração (i) tem um aspecto local
+				   em vez de global, ou seja, pode ser usado dentro de eventListeners
+				*/
+				
+				for(let i = 0; i < buttons.length; i++) {
+
+					buttons[i].addEventListener("click", function() {
+						console.log( buttons[i].textContent );
+					});
+				}
+
+			});
+		</script>
+	</head>
+	<body>
+		<ul>
+			<li>Item 1</li>
+			<li>Item 2</li>
+			<li>Item 3</li>
+			<li>Item 4</li>
+			<li>Item 5</li>
+		</ul>
+		<div>
+			<button>1</button>
+			<button>2</button>
+			<button>3</button>
+			<button>4</button>
+			<button>5</button>
+		</div>
+	</body>
+</html>

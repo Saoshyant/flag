@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt">
+	<head>
+		<meta charset="utf-8">
+		<title>Galeria de Imagens</title>
+		<script>
+			const images = [
+				"https://media1.popsugar-assets.com/files/thumbor/fye8fGVUpM_dn9U6CgtVgdZ5iEo=/0x176:1567x999/fit-in/1567x1175/top/filters:format_auto():quality(85):upscale()/2020/07/07/499/n/44054896/b5b455805f0455a95709e4.58972830_.jpg",
+				"https://www.woodlandkennel.com/wp-content/uploads/2013/09/20160722_195202.jpg",
+				"https://upload.wikimedia.org/wikipedia/commons/6/65/Cute_beagle_puppy_lilly.jpg",
+				"http://farm5.staticflickr.com/4112/5170590074_066e255655_o.jpg",
+				"http://2.bp.blogspot.com/-PIWqtE6GA34/UpYSJwcGdqI/AAAAAAAADFQ/--8tRwUVaVg/s1600/beautiful-puppies-dogs-2014.jpg",
+				"https://www.dailypaws.com/thmb/gPnzw94GK-pwekq-xZyLbGYv850=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/jack-russell-terrier-puppy-981611246-2000-1c47d18ddab04c09820e03d59dd3ee95.jpg"
+			];
+			
+			
+			/* passos:
+			   selecionar ambos elementos relevantes para dentro de variaveis
+			   aplicar evento de clique ao botão
+			   quando clicado, muda o source da imagem no HTML para a que está na primeira posição do array de imagens
+			   para saber em que posição estamos na lista de imagens e poder passar para a proxima, vamos criar uma variavel
+			   e utilizar essa variavel para ir passando de imagem em imagem
+			   com isto feito, temos que conseguir controlar as posições para que ao chegar ao final volte ao início (primeira imagem)
+			   de seguida, criar um botão para andar para trás e usar uma loógica semelhante à funcionalidade já criada (mas invertida)
+			*/
+
+			document.addEventListener("DOMContentLoaded", function() {
+
+				let pos = 0;
+				const pic = document.getElementById("pic");
+				const next = document.getElementById("next");
+				const prev = document.getElementById("prev");
+				
+				pic.src = images[pos]; // carregar a primeira imagem na entrada da página
+
+				next.addEventListener("click", function() {
+
+					pos++;
+
+					if(pos >= images.length) {
+						pos = 0;
+					}
+
+					pic.src = images[ pos ];
+				});
+
+				prev.addEventListener("click", function() {
+					
+					pos--;
+
+					if(pos < 0) {
+						pos = images.length - 1;
+					}
+					
+					pic.src = images[ pos ];
+				});
+			});
+		</script>
+		<style>
+			#pic { max-width: 100%; }
+		</style>
+	</head>
+	<body>
+		<div>
+			<button id="prev" type="button">&lt; Anterior</button>
+			<button id="next" type="button">Próxima &gt;</button>
+		</div>
+		<div>
+			<img id="pic" src="" alt="">
+		</div>
+	</body>
+</html>

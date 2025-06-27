@@ -17,7 +17,7 @@
 					   aumentou a complexidade: o botão tem agora que alternar entre esconder e mostrar a imagem
 					   ou seja, o display muda de "none" para "inline" e vice-versa
 					*/
-					if( puppy.style.display === "none" ) {
+/*					if( puppy.style.display === "none" ) {
 						puppy.style.display = "inline";
 						//btn.textContent = "Esconde";
 					}
@@ -25,10 +25,23 @@
 						puppy.style.display = "none";
 						//btn.textContent = "Mostrar";
 					}
+*/
+/*
+					if( puppy.classList.contains("hide") ) {
+						puppy.classList.remove("hide");
+					}
+					else {
+						puppy.classList.add("hide");
+					}
+*/
+					puppy.classList.toggle("hide");
 				});
 
 			});
 		</script>
+		<style>
+			.hide { display: none; }
+		</style>
 	</head>
 	<body>
 		<div>
