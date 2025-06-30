@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt">
+	<head>
+		<meta charset="utf-8">
+		<title>Jogo do Pedra, Papel, Tesoura</title>
+		<script>
+			/* exercício:
+			   criar uma variavel chamada "playerChoice" cotendo a jogada que o utilizador escolheu baseado no seu clique
+			   exemplo: mostrar na consola que o utilizador carregou no botão que diz "Papel"
+			   e essa informação veio da variável "playerChoice"
+			*/
+			document.addEventListener("DOMContentLoaded", function() {
+
+				let playerScore = 0;
+				let cpuScore = 0;
+
+				const buttons = document.getElementsByTagName("button");
+				
+				const result = document.getElementById("result");
+				const gameBoard = document.getElementById("gameBoard");
+				const playerChoiceHTML = document.getElementById("playerChoiceHTML");
+				const cpuChoiceHTML = document.getElementById("cpuChoiceHTML");
+
+				for(let i = 0; i < buttons.length; i++) {
+					
+					buttons[i].addEventListener("click", function() {
+					
+						gameBoard.classList.remove("hide");
+					
+						const cpuChoice = "Pedra";
+
+						const playerChoice = buttons[i].textContent;
+						
+						cpuChoiceHTML.textContent = cpuChoice;
+						playerChoiceHTML.textContent = playerChoice;
+						
+						/* exercício: implementar a logica do Jogo
+							regras:
+							1) pedra vence tesoura
+							2) papel vence pedra
+							3) tesoura vence papel
+							4) se ambos são iguais, empate
+							
+							mostrar os resultados do jogo nos elementos HTML respectivos na pagina
+						*/
+
+						if( playerChoice === cpuChoice ) {
+							result.textContent = "Houve um empate";
+						}
+						else if(
+							(cpuChoice === "Pedra" && playerChoice === "Tesoura") ||
+							(cpuChoice === "Papel" && playerChoice === "Pedra") ||
+							(cpuChoice === "Tesoura" && playerChoice === "Papel")
+						) {
+							cpuScore++;
+							document.getElementById("cpuScoreHTML").textContent = cpuScore;
+							result.textContent = "Ganhou CPU";
+						}
+						else {
+							playerScore++;
+							document.getElementById("playerScoreHTML").textContent = playerScore;
+							result.textContent = "Ganhaste!";
+						}
+					});
+				}
+			});
+		</script>
+		<style>
+			.hide { display: none !important; }
+		</style>
+	</head>
+	<body>
+		<dl id="gameBoard" class="hide">
+			<dt>Jogador</dt>
+			<dd id="playerChoiceHTML"></dd>
+			<dt>CPU</dt>
+			<dd id="cpuChoiceHTML"></dd>
+			<dt>Resultado</dt>
+			<dd id="result"></dd>
+			<!-- proximo exercício: preencher os scoreboards abaixo com a pontuação que vamos guardando -->
+			<dt>Pontuação</dt>
+			<dd>Jogador (<span id="playerScoreHTML">0</span>) vs CPU (<span id="cpuScoreHTML">0</span>)</dd>
+		</dl>
+		<div>
+			<button type="button">Pedra</button>
+			<button type="button">Papel</button>
+			<button type="button">Tesoura</button>
+		</div>
+	</body>
+</html>

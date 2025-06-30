@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt">
+	<head>
+		<meta charset="utf-8">
+		<title>Modal Irritante</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<script>
+			/* exercício: implementar o codigo necessário para que ao clicar-se no botão "aceito",
+			   todo o modal desapareça dando acesso à pagina  */
+			document.addEventListener("DOMContentLoaded", function() {
+			
+				const accepts = document.getElementById("accepts");
+				const ModalWrapper = document.getElementById("ModalWrapper");
+
+				accepts.addEventListener("click", function() {
+					//ModalWrapper.style.display = "none";
+					ModalWrapper.classList.add("hide");
+				});
+			});
+		</script>
+		<style>
+			body { margin: 0; }
+			
+			.hide { display: none !important; }
+
+			#ModalWrapper {
+				background-color: rgba(80, 80, 80, 0.9);
+				width: 100vw;
+				height: 100vh;
+				position: fixed;
+				top: 0;
+				left: 0;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+			}
+			
+			#Modal {
+				padding: 10px;
+				min-width: 50vw;
+				min-height: 60vh;
+				background-color: #FFF;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				flex-direction: column;
+				border-radius: 20px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="ModalWrapper">
+			<div id="Modal">
+				<p>Aceita vender a sua alma ao demo?</p>
+				<div>
+					<button type="button" id="accepts">Com certeza!</button>
+				</div>
+			</div>
+		</div>
+		<main>
+			<h1>Conteúdo Importante</h1>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam condimentum turpis diam, eu eleifend tellus gravida ac. Nam placerat at nibh id egestas. Praesent ut ipsum posuere lacus sodales faucibus. Nullam varius fermentum arcu et interdum. Aliquam convallis elit dui, in interdum odio commodo a. Vivamus suscipit leo ut rutrum tempor. Nunc tempor eros non placerat consectetur.</p>
+			<p>Nulla id turpis pulvinar, sodales dolor ac, vestibulum est. Donec sapien orci, elementum eu ultricies id, sollicitudin in dui. Integer posuere massa et tortor fringilla, vitae mattis dolor condimentum. Maecenas consequat pharetra ipsum, ac tincidunt ante dapibus eget. Sed convallis finibus eros, ut placerat orci ornare non. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Mauris accumsan fermentum scelerisque. Fusce consequat lorem in elit viverra vulputate.</p>
+			<p>Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...</p>
+		</main>
+	</body>
+</html>
