@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt">
+	<head>
+		<meta charset="utf-8">
+		<title>Jogo do Galo / Jogo da Velha / Tic Tac Toe</title>
+		<script>
+			/* exercício:
+			   implementar todo o codigo necessário para ao clicar em qualquer um dos botões, aparecer um X na página
+			*/
+			document.addEventListener("DOMContentLoaded", function() {
+
+				let symbol = "X";
+				const buttons = document.getElementsByTagName("button");
+
+				for(let i = 0; i < buttons.length; i++) {
+
+					buttons[i].addEventListener("click", function() {
+						buttons[i].textContent = symbol;
+
+						/* proximo passo: alternar entre o "X" e "O" */
+						if(symbol === "X") {
+							symbol = "O";
+						}
+						else {
+							symbol = "X";
+						}
+					});
+				}
+			});
+		</script>
+		<style>
+			main {
+				display: grid;
+				grid-template-columns: 1fr 1fr 1fr;
+				grid-template-rows: 20vh 20vh 20vh;
+				gap: 1px;
+			}
+
+			main button {
+				border-radius: 0;
+				border: 0;
+				cursor: pointer;
+				font-size: 9vh;
+				font-weight: bold;
+			}
+		</style>
+	</head>
+	<body>
+		<main>
+			<button type="button"></button>
+			<button type="button"></button>
+			<button type="button"></button>
+			<button type="button"></button>
+			<button type="button"></button>
+			<button type="button"></button>
+			<button type="button"></button>
+			<button type="button"></button>
+			<button type="button"></button>
+		</main>
+	</body>
+</html>

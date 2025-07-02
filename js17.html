@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt">
+	<head>
+		<meta charset="utf-8">
+		<title>Criar Números Aleatórios</title>
+		<script>
+			console.log( Math.random() ); // providencia um número entre 0.0000000000000001 e 0.9999999999999999
+			console.log( Math.random() * 5 ); // multiplicando por algo deixa de ser sempre 0 e torna-se assim mais previsivel
+			
+			console.log(  Math.round(1.11111111111111)  ); // 1
+			console.log(  Math.round(1.99999999999999)  ); // 2
+			
+			console.log(  Math.floor(1.11111111111111) ); // 1
+			console.log(  Math.floor(1.99999999999999) ); // 1
+			
+			console.log(  Math.ceil(1.11111111111111) ); // 2
+			console.log(  Math.ceil(1.99999999999999) ); // 2
+			
+			console.log(  Math.floor(Math.random() * 10) ); // 0-9
+			console.log(  Math.ceil(Math.random() * 10) );  // 1-10
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

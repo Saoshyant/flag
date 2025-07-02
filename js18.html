@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt">
+	<head>
+		<meta charset="utf-8">
+		<title>Adivinhar o número possível entre 1 e 12</title>
+		<script>
+			let attemptsLeft = 2;
+
+			let number = Math.ceil(Math.random() * 12);
+			console.log(number);
+			
+			let answer = prompt("Escolha um número entre 1 e 12");
+			/* exercício: enquanto o utilizador não acertar, perguntar continuamente por uma resposta
+			   ou seja, deixar tentar outros números até eventualmente acertar
+			   
+			   implementar um sistema de tentativas, se gastou 3 tentativas e não acertou = GAME OVER
+			*/
+			while(answer != number && attemptsLeft > 0) {
+				alert("Falhaste!  Tenta de novo! Tens mais " + attemptsLeft + " tentativas");
+
+				answer = prompt("Escolha um número entre 1 e 12");
+				
+				attemptsLeft--;
+			}
+
+			if( number == answer ) {
+				alert("Acertaste!  Era mesmo " + number);
+			}
+			else {
+				alert("GAME OVER!");
+			}
+		</script>
+	</head>
+	<body>
+	</body>
+</html>
