@@ -10,22 +10,115 @@
 			document.addEventListener("DOMContentLoaded", function() {
 
 				let symbol = "X";
-				const buttons = document.getElementsByTagName("button");
+				const buttons = document.querySelectorAll("main button");
+				
+				const resetBtn = document.getElementById("resetBtn");
+
+				function resetGame() {
+					for(let i = 0; i < buttons.length; i++) {
+						buttons[i].textContent = "";
+					}
+
+					symbol = "X";
+				}
 
 				for(let i = 0; i < buttons.length; i++) {
 
 					buttons[i].addEventListener("click", function() {
-						buttons[i].textContent = symbol;
+					
+						if( buttons[i].textContent === "" ) {
+							buttons[i].textContent = symbol;
 
-						/* proximo passo: alternar entre o "X" e "O" */
-						if(symbol === "X") {
-							symbol = "O";
+							/* proximo passo: alternar entre o "X" e "O" */
+							if(symbol === "X") {
+								symbol = "O";
+							}
+							else {
+								symbol = "X";
+							}
 						}
-						else {
-							symbol = "X";
+
+						if(
+							buttons[0].textContent !== "" &&
+							buttons[0].textContent === buttons[1].textContent &&
+							buttons[0].textContent === buttons[2].textContent
+						) {
+							alert("Jogo Terminou!");
+							resetGame();
+						}
+						
+						if(
+							buttons[3].textContent !== "" &&
+							buttons[3].textContent === buttons[4].textContent &&
+							buttons[3].textContent === buttons[5].textContent 
+						) {
+							alert("Jogo Terminou!");
+							resetGame();
+						}
+
+						if(
+							buttons[6].textContent !== "" &&
+							buttons[6].textContent === buttons[7].textContent &&
+							buttons[6].textContent === buttons[8].textContent 
+						) {
+							alert("Jogo Terminou!");
+							resetGame();
+						}
+
+						if(
+							buttons[0].textContent !== "" &&
+							buttons[0].textContent === buttons[3].textContent &&
+							buttons[0].textContent === buttons[6].textContent 
+						) {
+							alert("Jogo Terminou!");
+							resetGame();
+						}
+						
+						if(
+							buttons[1].textContent !== "" &&
+							buttons[1].textContent === buttons[4].textContent &&
+							buttons[1].textContent === buttons[7].textContent 
+						) {
+							alert("Jogo Terminou!");
+							resetGame();
+						}
+
+						if(
+							buttons[2].textContent !== "" &&
+							buttons[2].textContent === buttons[5].textContent &&
+							buttons[2].textContent === buttons[8].textContent 
+						) {
+							alert("Jogo Terminou!");
+							resetGame();
+						}
+
+						if(
+							buttons[0].textContent !== "" &&
+							buttons[0].textContent === buttons[4].textContent &&
+							buttons[0].textContent === buttons[8].textContent 
+						) {
+							alert("Jogo Terminou!");
+							resetGame();
+						}
+
+						if(
+							buttons[2].textContent !== "" &&
+							buttons[2].textContent === buttons[4].textContent &&
+							buttons[2].textContent === buttons[6].textContent 
+						) {
+							alert("Jogo Terminou!");
+							resetGame();
 						}
 					});
+
 				}
+
+				/* quando uma função com nome é passada como argumento para outra função,
+				   só se pode usar o nome da função sem os parênteses
+				   se tentarmos colocar os parênteses, a função é imediatamente invocada no load da página
+				*/
+				resetBtn.addEventListener("click", resetGame );
+
 			});
 		</script>
 		<style>
@@ -57,5 +150,12 @@
 			<button type="button"></button>
 			<button type="button"></button>
 		</main>
+		<div>
+			<button id="resetBtn" type="button">Novo Jogo</button>
+			<!-- exercício:
+			     implementar a logica necessária para forçar o reinicio do jogo (como se a pagina tivesse acabado de carregar)
+				 MAS sem utilizar o window.location.reload()
+			-->
+		</div>
 	</body>
 </html>

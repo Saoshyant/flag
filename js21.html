@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt">
+	<head>
+		<meta charset="utf-8">
+		<title>Temporizadores ou Intervalos de Tempo</title>
+		<script>	
+			let s = 0;
+
+			setInterval(function() {
+				/* exercício: colocar os segundos em que a pessoa esteja na pagina a aparecer no elemento de HTML relevante */
+				s++;
+
+				/* proximo exercicio: quando passar um minuto, voltar a zero */
+				if(s > 59) {
+					s = 0;
+				}
+
+				const seconds = document.getElementById("seconds");
+				seconds.textContent = s;
+				
+			}, 1000);
+		</script>
+	</head>
+	<body>
+		<div>
+			<span id="seconds">0</span>
+		</div>
+	</body>
+</html>
