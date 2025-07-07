@@ -3,27 +3,87 @@
 	<head>
 		<meta charset="utf-8">
 		<title>Temporizadores ou Intervalos de Tempo</title>
-		<script>	
+		<script>
+			let h = 0;
+			let m = 0;
 			let s = 0;
+			/* proximo exercicio: colocar os minutos e horas a funcionar
+			   existem duas formas de conseguir este resultado; encontrem pelo menos uma delas
+			*/
 
+			/* exercício: colocar os segundos em que a pessoa esteja na pagina a aparecer no elemento de HTML relevante */
 			setInterval(function() {
-				/* exercício: colocar os segundos em que a pessoa esteja na pagina a aparecer no elemento de HTML relevante */
 				s++;
 
-				/* proximo exercicio: quando passar um minuto, voltar a zero */
 				if(s > 59) {
+					m++;
 					s = 0;
 				}
 
-				const seconds = document.getElementById("seconds");
-				seconds.textContent = s;
+				if(m > 59) {
+					h++;
+					m = 0;
+				}
+
+				if(h > 23) {
+					h = 0;
+				}
 				
+				/* por causa que não podemos misturar strings com números, quando precisamos de
+				   prefixar o 0 a números menores que 10, temos que ou usar uma variavel separada
+				   de string, ou então usar um IF abreviado
+
+				   este IF abreviado tem o nome tecnico de Operador Ternário
+				   sintaxe:   (condição) ? resultado : else;
+				   exemplo:
+							x < 10 ? "0" + x : x;
+						se x for menor que 10 ? prefixa 0 ao x : caso contrário usa só o x sem transformação
+				*/
+				const seconds = document.getElementById("seconds");
+				seconds.textContent = s < 10 ? "0" + s : s;
+				const minutes = document.getElementById("minutes");
+				minutes.textContent = m < 10 ? "0" + m : m;
+				const hours = document.getElementById("hours");
+				hours.textContent = h < 10 ? "0" + h : h;
+
 			}, 1000);
+
+			/*
+			setInterval(function() {
+				m++;
+				
+				if(m > 59) {
+					m = 0;
+				}
+				
+				console.log(m);
+				
+				const minutes = document.getElementById("minutes");
+				minutes.textContent = m;
+			
+			}, 60000);
+
+			setInterval(function() {
+			
+				h++;
+
+				if(h > 23) {
+					h = 0;
+				}
+
+				const hours = document.getElementById("hours");
+				hours.textContent = h;
+				
+			}, 1000 * 60 * 60);
+			
+			*/
 		</script>
 	</head>
 	<body>
 		<div>
-			<span id="seconds">0</span>
+			<span id="hours">00</span>
+			<span id="minutes">00</span>
+			<span id="seconds">00</span>
 		</div>
 	</body>
 </html>
