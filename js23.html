@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt">
+	<head>
+		<meta charset="utf-8">
+		<title>Exercício de Relógio</title>
+		<script>
+			const today = new Date();
+			let h = today.getHours();
+			let m = today.getMinutes();
+			let s = today.getSeconds();
+
+			setInterval(function() {
+				s++;
+
+				if(s > 59) {
+					m++;
+					s = 0;
+				}
+
+				if(m > 59) {
+					h++;
+					m = 0;
+				}
+
+				if(h > 23) {
+					h = 0;
+				}
+
+				const seconds = document.getElementById("seconds");
+				seconds.textContent = s < 10 ? "0" + s : s;
+				const minutes = document.getElementById("minutes");
+				minutes.textContent = m < 10 ? "0" + m : m;
+				const hours = document.getElementById("hours");
+				hours.textContent = h < 10 ? "0" + h : h;
+
+			}, 1000);
+		</script>
+	</head>
+	<body>
+		<div>
+			<span id="hours">00</span>
+			<span id="minutes">00</span>
+			<span id="seconds">00</span>
+		</div>
+	</body>
+</html>

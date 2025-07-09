@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt">
+	<head>
+		<meta charset="utf-8">
+		<title>Como Lidar com Formulários em JS</title>
+		<script>
+			
+		</script>
+	</head>
+	<body>
+		<form method="post" action="js25.html">
+		<!--
+		HTTP 
+			metodos de comunicação
+				GET  (para obter informação como uma pesquisa, ou seja, algo que não faça alterações no backend)
+				POST (para fazer uma alteração)
+			action 
+				URL com o destino para onde a informação vai
+				se for para cima de si mesmo, declarar o ficheiro onde estamos
+		-->
+			<div>
+				<label>
+					Nome Completo
+					<input type="text" name="full_name">
+				</label>
+			</div>
+		</form>
+		<!--
+		backend recebe request, envia resposta em formato de HTML 
+		
+		a pagina de HTML depois de carregar é estática e não consegue fazer nada com o backend
+		a não ser que haja um formulário na página e esse sim consegue voltar a enviar informação para o backend 
+		após a submissão do formulário (ou seja o HTML comunicou com o backend)
+		-->
+	</body>
+</html>
