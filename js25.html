@@ -4,7 +4,20 @@
 		<meta charset="utf-8">
 		<title>Como Lidar com Formulários em JS</title>
 		<script>
+			/* exercício:
+			   obter o formulario para dentro de uma variavel
+			*/
 			
+			document.addEventListener("DOMContentLoaded", function() {
+
+				const form = document.querySelector("form");
+
+				form.addEventListener("submit", function(event) {
+					event.preventDefault();
+
+					console.log( form.full_name.value );
+				});
+			});
 		</script>
 	</head>
 	<body>
@@ -23,6 +36,9 @@
 					Nome Completo
 					<input type="text" name="full_name">
 				</label>
+			</div>
+			<div>
+				<button type="submit" name="send">Enviar</button>
 			</div>
 		</form>
 		<!--

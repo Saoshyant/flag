@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt">
+	<head>
+		<meta charset="utf-8">
+		<title>Navegar no DOM</title>
+		<script>
+			document.addEventListener("DOMContentLoaded", function() {
+
+				const List = document.getElementById("List");
+
+				console.log( List.firstElementChild );
+				console.log( List.lastElementChild );
+				console.log( List.firstElementChild.nextElementSibling );
+				console.log( List.lastElementChild.previousElementSibling );
+				console.log( List.firstElementChild.nextElementSibling.nextElementSibling );
+				
+				console.log( List.children[2] );
+			});
+		</script>
+	</head>
+	<body>
+		<ul id="List">
+			<li>Item 1</li>
+			<li>Item 2</li>
+			<li>Item 3</li>
+			<li>Item 4</li>
+			<li>Item 5</li>
+		</ul>
+		<!-- exercício: conseguir navegar até ao SPAN presente nesta otherList sem usar mais variaveis
+		que otherList e apenas os conceitos de navegação no DOM -->
+		<ul id="otherList">
+			<li>Item 1</li>
+			<li>Item 2
+				<ul>
+					<li>Subitem 1</li>
+					<li>Subitem 2</li>
+					<li>Subitem 3
+						<ul>
+							<li>Subsubitem 1</li>
+							<li>Subsubitem 2</li>
+							<li>Subsubitem 3</li>
+							<li>Subsubitem 4 <span>Catch Me If You Can</span></li>
+						</ul>
+					</li>
+					<li>Subitem 4</li>
+				</ul>
+			</li>
+			<li>Item 3</li>
+			<li>Item 4</li>
+			<li>Item 5</li>
+		</ul>
+	</body>
+</html>

@@ -1,0 +1,71 @@
+<!-- primeiro exercício:
+	criar formulário do zero que vai ter os seguintes campos: username e password
+    ao ser submetido, controlar por JS e mostrar na consola os valores de cada um destes campos
+
+	segundo exercicio:
+	criar duas variaveis fixas: username=Sousa, password=123456
+	validar se o utilizador acertou no preenchimento dos dados de login (ou seja, se é o tal Sousa)
+	se sim, disser Bem Vindo, se não avisar que falhou
+-->
+<!DOCTYPE html>
+<html lang="pt">
+	<head>
+		<meta charset="utf-8">
+		<title>Formulário de Login</title>
+		<script>
+			document.addEventListener("DOMContentLoaded", function() {
+				const form = document.querySelector("form");
+				
+				/* exercício final
+				   os requisitos anteriores ficaram mais complexos
+				   agora existem dois arrays com usernames e passwords
+				   validar que o utilizador que está a tentar fazer login tem correspondencia nos arrays disponiveis
+				   ou seja, se a Barbara fizer login, tem que usar a password 19901020
+				*/
+				const usernameList = ["Sousa", "Manel", "Fernanda", "Tony", "Barbara"];
+				const passwordList = ["123456", "Password01", "pa$$w0rd", "qwerty", "19901020"];
+				
+				form.addEventListener("submit", function(event) {
+				
+					event.preventDefault();
+					
+					let loginSuccess = false;
+
+					for(let i = 0; i < usernameList.length; i++) {
+						console.log(usernameList[i], passwordList[i]);
+
+						if(form.username.value === usernameList[i] && form.password.value === passwordList[i]) {
+							alert("Bem Vindo");
+							loginSuccess = true;
+						}
+					}
+
+					if( !loginSuccess) {
+						alert("Dados incorrectos");
+					}
+
+					console.log(form.username.value, form.password.value);
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<form method="post" action="js26.html">
+			<div>
+				<label>
+					Nome de Utilizador
+					<input type="text" name="username" autofocus>
+				</label>
+			</div>
+			<div>
+				<label>
+					Password
+					<input type="password" name="password">
+				</label>
+			</div>
+			<div>
+				<button type="submit">Efectuar Login</button>
+			</div>
+		</form>
+	</body>
+</html>
