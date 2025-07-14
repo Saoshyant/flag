@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt">
+	<head>
+		<meta charset="utf-8">
+		<title>Manipular o DOM</title>
+		<script>
+			document.addEventListener("DOMContentLoaded", function() {
+				const list = document.getElementById("list");
+				const addBtn = document.getElementById("addBtn");
+				const removeBtn = document.getElementById("removeBtn");
+
+				let i = 1;
+
+				addBtn.addEventListener("click", function() {
+					//let i = list.children.length + 1; // forma alternativa de fazer isto
+
+					list.appendChild( document.createElement("li") );
+
+					list.lastElementChild.textContent = "Item " + i;
+
+					i++;
+				});
+				
+				/* exercício: implementar clique no novo botão, que vai selecionar o filho
+				   mais recente da lista e remove-lo usando o método .remove() */
+			    removeBtn.addEventListener("click", function() {
+					
+					if( list.lastElementChild ) {
+						// está a ser validado com um conceito chamado "truthy", ou seja, se o elemento existir basta
+						// podiamos usar também um (list.children.length > 0) como condição
+						list.lastElementChild.remove();
+
+						i--;
+					}
+
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<div>
+			<button id="addBtn" type="button">Adicionar Item</button>
+			<button id="removeBtn" type="button">Remover Item</button>
+		</div>
+		<ul id="list"></ul>
+	</body>
+</html>

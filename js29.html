@@ -1,0 +1,91 @@
+<!--
+	Jogo da Forca /  Hanged Man
+	
+	Cenas
+	C E N A S
+	
+	Palavra
+	_ A _ A _ _ A
+-->
+<!DOCTYPE html>
+<html lang="pt">
+	<head>
+		<meta charset="utf-8">
+		<title>Jogo da Forca (Hanged Man)</title>
+		<script>
+			document.addEventListener("DOMContentLoaded", function() {
+
+				const wordList = [
+					"Portugal", "Otorrinolaringologista", "Paralelepipedo", "Desconstitucionalizacao",
+					"Cachorro", "Ovo", "Esdruxula", "Inconstitucionalissimamente", "Aviao", "Portaavioes",
+					"Esternocleidomastoideo", "Algarve", "Portalegre", "Heliopatia", "Macaco", "Pneumoultramicroscopicossilicovulcanoconiose", "Pneumoultramicroscopicossilicovulcanoconiotico"
+				];
+				
+				/* selecionar uma destas palavras aleatoriamente para dentro de uma variavel */
+				const randomNumber = Math.floor(Math.random() * wordList.length);
+				const chosenWord = wordList[ randomNumber ].toUpperCase();
+				console.log( chosenWord, chosenWord.length );
+				
+				const gameBoard = document.getElementById("gameBoard");
+				const form = document.querySelector("form");
+
+				for(let i = 0; i < chosenWord.length; i++) {
+					gameBoard.appendChild( document.createElement("span") );
+					gameBoard.lastElementChild.textContent = "_";
+				}
+
+				form.addEventListener("submit", function(event) {
+
+					event.preventDefault();
+
+					const letterPicked = form.letter.value.toUpperCase();
+					const spans = gameBoard.getElementsByTagName("span"); //document.querySelectorAll("#gameBoard span")
+					
+					//console.log( letterPicked );
+
+					for(let i = 0; i < chosenWord.length; i++) {
+						//console.log( chosenWord[i] );
+
+						if( chosenWord[i] === letterPicked ) {
+							//console.log( spans[i] );
+							spans[i].textContent = letterPicked;
+						}
+					}
+				});
+			});
+		</script>
+		<style>
+			#gameBoard {
+				letter-spacing: 0.6rem;
+				margin-bottom: 10px;
+			}
+
+			input[name="letter"] {
+				width: 40px;
+				text-transform: uppercase;
+			}
+		</style>
+	</head>
+	<body>
+		<main>
+			<h1>Jogo da Forca</h1>
+			<div id="gameBoard"></div>
+			<!-- exercício:
+			     preencher o gameBoard com <span>_</span> (appendChild e textContent) por cada letra da palavra escolhida
+				 
+				 exercício:
+				 criar um formulário para o utilizador digitar a letra que pretende verificar se está presente na palavra
+				 ao submeter, mostrar essa letra na consola
+		    -->
+			<form method="post" action="js29.html" autocomplete="off">
+				<div>
+					<label>
+						Letra
+						<input type="text" name="letter" maxlength="1" autofocus required>
+					</label>
+					<button type="submit">OK</button>
+				</div>
+			</form>
+		</main>
+	</body>
+</html>
