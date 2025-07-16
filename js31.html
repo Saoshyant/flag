@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt">
+	<head>
+		<meta charset="utf-8">
+		<title>JSON</title>
+		<script>
+			/*
+				JavaScript Object Notation
+
+				capacidade de transformar estruturas de dados complexas
+				em texto simples para transferir para outros sistemas/aplicações
+				ou quaisquer outros propósitos
+			*/
+			const carBrands = ["Opel", "Seat", "Hyundai", "BMW", "Fiat", "Honda", "Ford"];
+
+			/* converter o array em texto: JSON.stringify() */
+			const carBrandsJSON = JSON.stringify(carBrands);
+			
+			console.log(carBrands);
+			console.log(carBrandsJSON);
+			console.log(typeof carBrandsJSON);
+
+			const carBrandsDetailed = [
+				{
+					name: "Opel",
+					established: "1862-01-21",
+					country: "Alemanha",
+					website: "https://opel.com"
+				},
+				{
+					name: "Seat",
+					established: "1950-05-09",
+					country: "Espanha",
+					website: "https://seat.com"
+				},
+				{
+					name: "Hyundai",
+					established: "1967-12-29",
+					country: "Coreia",
+					website: "https://hyundai.com"
+				}
+			];
+			
+			for(let i = 0; i < carBrandsDetailed.length; i++) {
+				console.log( carBrandsDetailed[i].website );
+			}
+			
+			console.log( JSON.stringify(carBrandsDetailed) );
+			
+			const text = '["Opel", "BMW", "Seat", "Ford"]';
+			console.log(text);
+			console.log( JSON.parse(text) );
+			const arrayRecovered = JSON.parse(text);
+			console.log( arrayRecovered[3] );
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

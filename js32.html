@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt">
+	<head>
+		<meta charset="utf-8">
+		<title>Agenda de Tarefas</title>
+		<script>
+			document.addEventListener("DOMContentLoaded", function() {
+
+				const form = document.querySelector("form");
+				const pageList = document.getElementById("pageList");
+
+				form.addEventListener("submit", function(event) {
+					event.preventDefault();
+
+					const task = form.task.value;
+					
+					console.log(task);
+
+					pageList.appendChild( document.createElement("li") );
+					pageList.lastElementChild.textContent = task;
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<h1>Agenda de Tarefas</h1>
+		<form method="post" action="js32.html">
+			<div>
+				<label>
+					Nova Tarefa
+					<input type="text" name="task" required autofocus autocomplete="off">
+				</label>
+				<button type="submit">Guardar</button>
+			</div>
+		</form>
+		<ol id="pageList"></ol>
+	</body>
+</html>

@@ -20,28 +20,56 @@
 					"Cachorro", "Ovo", "Esdruxula", "Inconstitucionalissimamente", "Aviao", "Portaavioes",
 					"Esternocleidomastoideo", "Algarve", "Portalegre", "Heliopatia", "Macaco", "Pneumoultramicroscopicossilicovulcanoconiose", "Pneumoultramicroscopicossilicovulcanoconiotico"
 				];
-				
-				/* selecionar uma destas palavras aleatoriamente para dentro de uma variavel */
-				const randomNumber = Math.floor(Math.random() * wordList.length);
-				const chosenWord = wordList[ randomNumber ].toUpperCase();
-				console.log( chosenWord, chosenWord.length );
-				
-				const gameBoard = document.getElementById("gameBoard");
-				const form = document.querySelector("form");
 
-				for(let i = 0; i < chosenWord.length; i++) {
-					gameBoard.appendChild( document.createElement("span") );
-					gameBoard.lastElementChild.textContent = "_";
+				let chosenWord = "";
+				let attemptsLeft = 6;
+
+				const gameBoard = document.getElementById("gameBoard");
+				const messages = document.getElementById("messages");
+				const form = document.querySelector("form");
+				const remainingOutput = document.getElementById("remainingOutput");
+
+				function newGame() {
+					/* selecionar uma destas palavras aleatoriamente para dentro de uma variavel */
+					const randomNumber = Math.floor(Math.random() * wordList.length);
+					chosenWord = wordList[ randomNumber ].toUpperCase();
+					console.log( chosenWord, chosenWord.length );
+
+					/* reinicializar o attemptsLeft */
+					attemptsLeft = 6;
+					remainingOutput.textContent = attemptsLeft;
+
+					/* limpar area de jogo actual se necessário */
+					while(gameBoard.lastElementChild) {
+						gameBoard.lastElementChild.remove();
+					}
+
+					/* criar nova área de jogo */
+					for(let i = 0; i < chosenWord.length; i++) {
+						gameBoard.appendChild( document.createElement("span") );
+						gameBoard.lastElementChild.textContent = "_";
+					}
+
+					/* limpar mensagens de alerta da página */
+					if(messages.lastElementChild) {
+						messages.lastElementChild.remove();
+					}
 				}
+
+				newGame();
 
 				form.addEventListener("submit", function(event) {
 
 					event.preventDefault();
-
 					const letterPicked = form.letter.value.toUpperCase();
 					const spans = gameBoard.getElementsByTagName("span"); //document.querySelectorAll("#gameBoard span")
-					
+
+					/* limpar o campo do formulario */
+					form.letter.value = "";
+					form.letter.focus();
+
 					//console.log( letterPicked );
+					let isCorrect = false;
 
 					for(let i = 0; i < chosenWord.length; i++) {
 						//console.log( chosenWord[i] );
@@ -49,12 +77,39 @@
 						if( chosenWord[i] === letterPicked ) {
 							//console.log( spans[i] );
 							spans[i].textContent = letterPicked;
+							isCorrect = true;
 						}
+
+					}
+
+					if( !isCorrect) {
+						attemptsLeft--;
+						remainingOutput.textContent = attemptsLeft;
+					}
+
+					if(attemptsLeft <= 0) {
+						messages
+						.appendChild( document.createElement("p") )
+						.setAttribute("role", "alert");
+
+						messages.lastElementChild.textContent = "Gastou todas as tentativas, boa sorte na próxima vida";
+
+						/* carregar novo jogo passados dois segundos */
+						setTimeout(newGame, 2000);
 					}
 				});
+
 			});
 		</script>
 		<style>
+			p[role="alert"] {
+				background: #F00;
+				color: #FFF;
+				text-align: center;
+				padding: 10px 0;
+				font-size: 150%;
+			}
+
 			#gameBoard {
 				letter-spacing: 0.6rem;
 				margin-bottom: 10px;
@@ -64,11 +119,22 @@
 				width: 40px;
 				text-transform: uppercase;
 			}
+
+			section { display: flex; align-items: baseline; }
+
+			h2 { margin: 0 10px 0 0; }
+
+			h2::after { content: ': '; }
 		</style>
 	</head>
 	<body>
 		<main>
 			<h1>Jogo da Forca</h1>
+			<section>
+				<h2>Tentativas Restantes</h2>
+				<div id="remainingOutput">6</div>
+			</section>
+			<div id="messages"></div>
 			<div id="gameBoard"></div>
 			<!-- exercício:
 			     preencher o gameBoard com <span>_</span> (appendChild e textContent) por cada letra da palavra escolhida
