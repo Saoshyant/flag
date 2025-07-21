@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt">
+	<head>
+		<meta charset="utf-8">
+		<title>Comunicação com o PHP local</title>
+		<script>
+			setInterval(() => {
+
+				fetch("./requests.php?request=auction")
+				.then( response => response.json() ) // resposta deve ser tratada no formato que vier: ou JSON ou texto
+				.then( result => {
+				
+					/* exercício:
+					   pegando no resultado do servidor, preencher os elementos de HTML relevantes com o tempo e preço
+					   posteriormente, colocar essa informação a actualizar continuamente
+					*/
+					document.getElementById("timer").textContent = result.timer;
+					document.getElementById("price").textContent = result.price + "€";
+				});
+			
+			}, 1000);
+		</script>
+	</head>
+	<body>
+		<h1>Leilão XPTO</h1>
+		<dl>
+			<dt>Tempo que falta</dt>
+			<dd id="timer">00:00:00</dd>
+			<dt>Preço actual</dt>
+			<dd id="price">0€</dd>
+		</dl>
+	</body>
+</html>

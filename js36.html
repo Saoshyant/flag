@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt">
+	<head>
+		<meta charset="utf-8">
+		<title>Como Esconder Informação Auxiliar para o JS: Custom Data Fields</title>
+		<script>
+			document.addEventListener("DOMContentLoaded", () => {
+
+				const parag = document.getElementById("parag");
+				
+				console.log( parag.dataset.hiddenInfo );
+				
+				/* mostrar na consola as três coisas escondidas do utilizador */
+				const user = document.getElementById("user");
+				
+				console.log(
+					user.dataset.username,
+					user.dataset.userId,
+					user.dataset.lastVisit
+				);
+			});
+		</script>
+	</head>
+	<body>
+		<p id="parag" data-hidden-info="Isto está escondido pá">Lorem ipsum cenas</p>
+		<div id="user" data-username="Jaime" data-user-id="123" data-last-visit="2024-10-20">
+			Bem vindo, Jaime
+		</div>
+	</body>
+</html>
