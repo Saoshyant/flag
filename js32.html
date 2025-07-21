@@ -9,15 +9,31 @@
 				const form = document.querySelector("form");
 				const pageList = document.getElementById("pageList");
 
+				/* toda a lógica vai assentar em existir um array local para eventualmente guardar no localStorage */
+				let taskList = [];
+				/* mas se já existir algo no localStorage, temos que preencher o array com essa informação para não a perder */
+				if( localStorage["tasks"] ) {
+					taskList = JSON.parse(localStorage["tasks"]);
+				}
+				/* se já existirem tarefas, mostrar também na página */
+				for(let i = 0; i < taskList.length; i++) {
+					pageList.appendChild( document.createElement("li") );
+					pageList.lastElementChild.textContent = taskList[i];
+				}
+
 				form.addEventListener("submit", function(event) {
 					event.preventDefault();
 
 					const task = form.task.value;
-					
-					console.log(task);
-
 					pageList.appendChild( document.createElement("li") );
 					pageList.lastElementChild.textContent = task;
+
+					taskList.push(task);
+					
+					localStorage["tasks"] = JSON.stringify(taskList);
+
+					form.task.value = "";
+					
 				});
 			});
 		</script>

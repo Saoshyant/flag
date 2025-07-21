@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt">
+	<head>
+		<meta charset="utf-8">
+		<title>Arrow Functions</title>
+		<script>
+			/* este setInterval está a usar uma função tradicional */
+			setInterval(function() {
+				console.log("passou um segundo");
+			}, 1000);
+
+			/* este setInterval está a usar uma arrow function */
+			setInterval(() => console.log("passaram dois segundos"), 2000);
+
+			document.addEventListener("DOMContentLoaded", () => {
+
+				const button = document.querySelector("button");
+
+				button.addEventListener("click", () => console.log("funca") );
+			});
+		</script>
+	</head>
+	<body>
+		<div>
+			<button type="button">Clica-me</button>
+		</div>
+	</body>
+</html>
