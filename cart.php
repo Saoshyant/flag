@@ -46,6 +46,28 @@
         </style>
         <script>
             document.addEventListener("DOMContentLoaded", () => {
+
+                function calculateTotal() {
+                    // primeiro passo, obter todos os produtos da pagina
+                    const products = document.querySelectorAll('table tr[data-product-id]');
+
+                    let total = 0;
+
+                    // segundo passo, percorrer todos os produtos obtidos e encontrar o preço e quantidade de cada um
+                    for(let product of products) {
+
+                        const input = product.getElementsByTagName("input")[0];
+
+                        const subtotal = product.dataset.price * input.value;
+
+                        // terceiro passo, ir somando os subtotais a uma variavel de total já existente
+                        total += subtotal;
+                    }
+                    
+                    // passo final, escrever no HTML o total calculado
+                    const totalHTML = document.querySelector('table tr:last-child td[colspan="2"]');
+                    totalHTML.textContent = total.toFixed(2) + "€";
+                }
                 
                 const buttons = document.getElementsByClassName("remove-button");
                 for(let button of buttons) {
@@ -63,7 +85,10 @@
                             body: "request=removeProduct&product_id=" + product_id
                         })
                         .then(response => response.json())
-                        .then(result => tr.remove())
+                        .then(result => {
+                            tr.remove();
+                            calculateTotal();
+                        })
                         .catch(error => alert("Ocorreu um erro"));
                     });
                 }
@@ -95,6 +120,7 @@
                                e para isso navegar para ele primeiro */
                             tr.children[3].textContent = subtotal + "€";
 
+                            calculateTotal();
                         })
                         .catch(error => alert("Ocorreu um erro"));
 

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt">
+	<head>
+		<meta charset="utf-8">
+		<title>Jogo do Galo Melhorado (com Destructors)</title>
+		<script>
+			/* exercício:
+			   implementar todo o codigo necessário para ao clicar em qualquer um dos botões, aparecer um X na página
+			*/
+			document.addEventListener("DOMContentLoaded", function() {
+
+				let symbol = "X";
+				const buttons = document.querySelectorAll("main button");
+				
+				const resetBtn = document.getElementById("resetBtn");
+
+				function resetGame() {
+					for(let i = 0; i < buttons.length; i++) {
+						buttons[i].textContent = "";
+					}
+
+					symbol = "X";
+				}
+
+				for(let i = 0; i < buttons.length; i++) {
+
+					buttons[i].addEventListener("click", function() {
+					
+						if( buttons[i].textContent === "" ) {
+							buttons[i].textContent = symbol;
+
+							/* proximo passo: alternar entre o "X" e "O" */
+							if(symbol === "X") {
+								symbol = "O";
+							}
+							else {
+								symbol = "X";
+							}
+						}
+
+                        const lines = [
+                            [0, 1, 2],
+                            [3, 4, 5],
+                            [6, 7, 8],
+                            [0, 3, 6],
+                            [1, 4, 7],
+                            [2, 5, 8],
+                            [0, 4, 8],
+                            [2, 4, 6]
+                        ];
+
+                        for(let line of lines) {
+                            
+                            const [a, b, c] = line;
+
+                            if(
+                                buttons[a].textContent !== "" &&
+                                buttons[a].textContent === buttons[b].textContent &&
+                                buttons[a].textContent === buttons[c].textContent
+                            ) {
+                                alert("Jogo Terminou!");
+                                resetGame();
+                            }
+                        }
+
+					});
+
+				}
+
+				/* quando uma função com nome é passada como argumento para outra função,
+				   só se pode usar o nome da função sem os parênteses
+				   se tentarmos colocar os parênteses, a função é imediatamente invocada no load da página
+				*/
+				resetBtn.addEventListener("click", resetGame );
+
+			});
+		</script>
+		<style>
+			main {
+				display: grid;
+				grid-template-columns: 1fr 1fr 1fr;
+				grid-template-rows: 20vh 20vh 20vh;
+				gap: 1px;
+			}
+
+			main button {
+				border-radius: 0;
+				border: 0;
+				cursor: pointer;
+				font-size: 9vh;
+				font-weight: bold;
+			}
+		</style>
+	</head>
+	<body>
+		<main>
+			<button type="button"></button>
+			<button type="button"></button>
+			<button type="button"></button>
+			<button type="button"></button>
+			<button type="button"></button>
+			<button type="button"></button>
+			<button type="button"></button>
+			<button type="button"></button>
+			<button type="button"></button>
+		</main>
+		<div>
+			<button id="resetBtn" type="button">Novo Jogo</button>
+			<!-- exercício:
+			     implementar a logica necessária para forçar o reinicio do jogo (como se a pagina tivesse acabado de carregar)
+				 MAS sem utilizar o window.location.reload()
+			-->
+		</div>
+	</body>
+</html>

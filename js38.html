@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt">
+    <head>
+        <meta charset="utf-8">
+        <title>Destructors: Obter partes de um array ou objecto</title>
+        <script>
+            const countries = ["Portugal", "Brasil", "Espanha", "Canadá"];
+
+            /*
+            const whereAmI = countries[0];
+            const ourBrothersAndSisters = countries[1];
+            const hateThoseGuys = countries[2];
+            */
+
+            // um destructor de array vai gerar varias variaveis individuais por cada registo que pretenda usar do array
+            const [whereAmI, ourBrothersAndSisters, hateThoseGuys] = countries;
+
+            console.log(whereAmI);
+            console.log(ourBrothersAndSisters);
+            console.log(hateThoseGuys);
+
+            const superHero = {
+                name: "Spider-Man",
+                powers: "Super agility and strength",
+                secretIdentity: "Peter Parker"
+            }
+
+            /* const name = superHero.name;
+            const secretIdentity = superHero.secretIdentity; */
+            
+            const { name, secretIdentity } = superHero;
+            console.log(name, secretIdentity);
+            
+            // intervalo 10m, voltamos as 20:46 
+        </script>
+    </head>
+    <body>
+    </body>
+</html>

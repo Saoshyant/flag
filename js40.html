@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt">
+	<head>
+		<meta charset="utf-8">
+		<title>Aplicação de Chat com Chatbots</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script>
+            document.addEventListener("DOMContentLoaded", () => {
+
+                const bots = [
+                    {
+                        name: "Jorge Jesus",
+                        messages: [
+                            "Os adeptos empulgam os jogadores, eles puxam pela equipa.",
+                            "Querem fazer do rapaz o bode respiratório.",
+                            "Não respondo a essa pergunta, porque isso é um assunto do forno interno do clube.",
+                            "Vocês os quatro formem aí um triângulo.",
+                            "Venham para junto dos pinos efervescentes.",
+                            "Queria dedicar a vitória aos motocars da Amadora.",
+                            "Isso dos estrangeiros não é um problema. Nós já estamos a tratar do processo de neutralização dos jogadores.",
+                            "Agora vamos jogar esta eliminatória em Standard de Liège.",
+                            "Ainda dou-le a dúvida desse lance.",
+                            "Quê que a gente vai fazer? Lutar como? Só se for na playstation. Na playstation eu consigo resolver isto."
+                        ]
+                    },
+                    {
+                        name: "Britney Spears",
+                        messages: [
+                            "I must confess I still believe (I still believe).",
+                            "Don't you know that you're toxic?",
+                            "I'm not a girl, not yet a woman."
+                        ]
+                    },
+
+                    {
+                        name: "Inês Brasil",
+                        messages: [
+                            "Segura a marimba aí mon amour!",
+                            "Seja a pessoa que for, se me atacar eu vou atacar.",
+                            "Se esse mundo existe, graças a Deus, por que existe? Porque graças a Deus, nós, fizemos o mundo, graças a Deus. Não, desculpe falar é, se existe nós nesse mundo, graças a Deus, é porque Deus fez o mundo. Mas eu falei uma palavra certa, se nós não existiavavumm... mos, se não existi... amus nós, o que que ia acontecer?",
+                            "Alô alô Graças a Deus!"
+                        ]
+                    },
+     
+                    {
+                        name: "Pero Vaz de Caminha",
+                        messages: [
+                            "A pele deles é parda e um pouco avermelhada. Têm rostos e narizes bem feitos. Andam nus, sem cobertura alguma. Nem se preocupam em cobrir ou deixar de cobrir suas vergonhas mais do se que preocupariam em mostrar o rosto. E a esse respeito são bastante inocentes. Ambos traziam o lábio inferior furado e metido nele um osso verdadeiro, de comprimento de uma mão travessa, e da grossura de um fuso de algodão, fino na ponta como um furador.  ",
+                            "Até agora não pudemos saber se há ouro ou prata nela, ou outra coisa de metal, ou ferro; nem os vimos. Contudo, a terra em si é de bom clima, fresco e temperado, como os de Entre-D’Ouro-E-Minho, nesta época do ano. As águas são muitas; infinitas. De tal maneira é graciosa que, querendo-a aproveitar, dar-se-á nela tudo, por causa das águas que tem!",
+                            "Parece-me gente de tal inocência que, se nós entendêssemos a sua fala e eles a nossa, eles se tornaria, logo cristãos, visto que não aparentam ter nem conhecer crença alguma. Portanto, se os degredados que vão ficar aqui aprenderem bem a sua fala e só entenderem, não duvido que eles, de acordo com a santa intenção de Vossa Alteza, se tornem cristãos e passem a crer na nossa santa fé."
+                        ]
+                    },
+     
+                    {
+                        name: "Pepe Mujica",
+                        messages: [
+                            "Aqueles que gostam de dinheiro devem ser expulsos da política. Eles são um perigo.",
+                            "Eu não sou pobre, eu sou sóbrio, de bagagem leve. Vivo com apenas o suficiente para que as coisas não roubem minha liberdade.",
+                            "Ocupamos o templo com o deus mercado que nos financia em parcelas e cartões a aparência de felicidade.",
+                            "A Humanidade precisa trabalhar menos, ter mais tempo livre e ser mais pé no chão."
+                        ]
+                    },
+     
+                    {
+                        name: "Dercy Gonçalves",
+                        messages: [
+                            "Não saio sem dentadura, pestana e peruca.",
+                            "Ah, não vem com sacanagem pra cima de mim que eu te mando pra PUTA QUE O PARIU!",
+                            "O país me conhece, o país grita: 'Dercy! Fala palavrão!', eu grito de volta: 'Vai tomar no cu!', eles morrem de rir."
+                        ]
+                    }
+                ];
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                /* exercício: controlar submissão do formulario para colocar o utilizador real a escrever na chatbox
+                   o nome aparece dentro de <dt>
+                   a mensagem aparece dentro de <dd>
+                */
+
+                const chatbox = document.getElementById("chatbox");
+                const form = document.querySelector("form");
+
+                form.addEventListener("submit", event => {
+
+                    event.preventDefault();
+                
+                    chatbox.appendChild( document.createElement("dt") ).textContent = form.username.value;
+                    chatbox.appendChild( document.createElement("dd") ).textContent = form.message.value;
+
+                    form.message.value = "";
+                });
+                
+            });
+        </script>
+        <style>
+            #chatbox {
+                border: 1px solid #000;
+                padding: 4px;
+                height: 80vh;
+                overflow: auto;
+            }
+        </style>
+    </head>
+    <body>
+        <dl id="chatbox"></dl>
+        <form method="post" action="js40.html">
+            <div>
+                <input type="text" name="username" aria-label="Nome de Utilizador" placeholder="Digita um nome público para si" required>
+                <input type="text" name="message" aria-label="Mensagem" placeholder="Escreva algo que queira partilhar" required>
+                <button type="submit">Enviar</button>
+            </div>
+        </form>
+    </body>
+</html>
