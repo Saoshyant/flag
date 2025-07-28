@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt">
+	<head>
+		<meta charset="utf-8">
+		<title>Canvas</title>
+		<script>
+			document.addEventListener("DOMContentLoaded", () => {
+
+				const canvas = document.querySelector("canvas").getContext("2d");
+				
+				canvas.fillRect(100, 100, 200, 200);
+				
+				canvas.fillStyle = "#04C";
+				
+				canvas.fillRect(600, 600, 200, 200);
+
+				canvas.beginPath();
+
+				canvas.moveTo(100, 600);
+				canvas.lineTo(100, 800);
+				canvas.lineTo(300, 800);
+				canvas.lineTo(100, 600);
+
+				/*
+				canvas.moveTo(100, 600);
+				canvas.lineTo(100, 800);
+				canvas.moveTo(100, 800);
+				canvas.lineTo(300, 700);
+				canvas.moveTo(100, 600);
+				canvas.lineTo(300, 700);
+				*/
+
+				canvas.stroke();
+			});
+		</script>
+		<style>
+			canvas { outline: 1px solid #F00; }
+		</style>
+	</head>
+	<body>
+		<canvas width="900" height="900"></canvas>
+	</body>
+</html>

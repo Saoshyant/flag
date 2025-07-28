@@ -76,9 +76,30 @@
 
 
 
+				/* desafio:
+				   para alem do utilizador, agora os bots tem que chatear também
+				   aleatoriamente (e de vez em quando) os bots decidem falar
+				   as vezes dois ao mesmo tempo, as vezes nenhum deles diz nada passados 12 segundos
+				*/
 
+				setInterval(() => {
 
+					const chance = Math.floor(Math.random() * 10);
 
+					if(chance === 7) {
+						/* escolher um bot aleatório e posteriormente uma mensagem aleatoria desse bot */
+						const randomBot = Math.floor(Math.random() * bots.length);
+						const randomMessage = Math.floor(Math.random() * bots[randomBot].messages.length);
+
+						/* com as variaveis de cima,
+						   escrever o nome do bot na pagina com <dt> e a mensagem escolhida no <dd> */
+						chatbox.appendChild( document.createElement("dt") ).textContent = bots[randomBot].name;
+						chatbox.appendChild( document.createElement("dd") ).textContent = bots[randomBot].messages[randomMessage];
+
+						chatbox.scrollTo(0, chatbox.scrollHeight);
+					}
+					
+				}, 250);
 
 
 
@@ -95,9 +116,11 @@
                 form.addEventListener("submit", event => {
 
                     event.preventDefault();
-                
+
                     chatbox.appendChild( document.createElement("dt") ).textContent = form.username.value;
                     chatbox.appendChild( document.createElement("dd") ).textContent = form.message.value;
+
+					chatbox.scrollTo(0, chatbox.scrollHeight);
 
                     form.message.value = "";
                 });

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt">
+	<head>
+		<meta charset="utf-8">
+		<title>Canvas: Exercício Paint</title>
+		<script>
+			document.addEventListener("DOMContentLoaded", () => {
+			
+				const colorPicker = document.getElementById("colorPicker");
+				const resetBtn = document.getElementById("resetBtn");
+
+				const canvas = document.querySelector("canvas");
+				const canvasCtx = canvas.getContext("2d"); // variavel de desenho
+
+				let isClicking = false;
+
+				canvas.addEventListener("mousedown", event => {
+					isClicking = true;
+
+					const canvasX = event.pageX - canvas.offsetLeft;
+					const canvasY = event.pageY - canvas.offsetTop;
+
+					canvasCtx.beginPath();
+					canvasCtx.moveTo(canvasX, canvasY);
+				});
+
+				canvas.addEventListener("mousemove", event => {
+					if( isClicking ) {
+						const canvasX = event.pageX - canvas.offsetLeft;
+						const canvasY = event.pageY - canvas.offsetTop;
+
+						canvasCtx.lineTo(canvasX, canvasY);
+
+						canvasCtx.stroke();
+					}
+				});
+				
+				canvas.addEventListener("mouseup", () => {
+					isClicking = false;
+				});
+
+				canvas.addEventListener("mouseout", () => {
+					isClicking = false;
+				});
+
+				/* exercicio: colocar a alteração de cor da linha a funcionar,
+				   quando o utilizador escolhe um novo valor na dropdown, pegamos
+				   nesse valor e mudamos a cor do stroke */
+				colorPicker.addEventListener("change", () => {
+					canvasCtx.strokeStyle = colorPicker.value;
+				});
+
+				resetBtn.addEventListener("click", () => {
+					if( confirm("Quer mesmo apagar tudo?") ) {
+						canvasCtx.clearRect(0, 0, canvas.width, canvas.height);
+					}
+				});
+			});
+		</script>
+		<style>
+			main {
+				max-width: 906px;
+				margin: 0 auto;
+			}
+
+			canvas {
+				border: 3px dashed #000;
+			}
+		</style>
+	</head>
+	<body>
+		<main>
+			<div>
+				<canvas width="900" height="900"></canvas>
+			</div>
+			<div>
+				<select id="colorPicker">
+					<option value="#000">Preto</option>
+					<option value="#F00">Vermelho</option>
+					<option value="#00F">Azul</option>
+					<option value="#0F0">Verde Claro</option>
+					<option value="#060">Verde Escuro</option>
+					<option value="#CCC">Cinzento Claro</option>
+					<option value="#333">Cinzento Escuro</option>
+					<option value="#F0F">Rosa</option>
+					<option value="#FF0">Amarelo</option>
+				</select>
+				<button type="button" id="resetBtn">Apagar Tudo</button>
+			</div>
+		</main>
+	</body>
+</html>
