@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt">
+	<head>
+		<meta charset="utf-8">
+        <title>Spread Operator</title>
+        <script>
+            const evenNumbers = [2, 4, 6, 8, 12];
+            const oddNumbers = [1, 3, 5, 7, 11];
+
+            /* com o spread operator, podemos combinar arrays diferentes num único */
+            const numbers = [...evenNumbers, ...oddNumbers];
+            console.log( numbers );
+
+            function sumNumbers(x, y, z, w, h) {
+                return x + y + z + w + h;
+            }
+
+            /* com o spread operator, também podemos preencher todos os
+               argumentos de uma função de uma única vez */
+            console.log( sumNumbers(...evenNumbers) );
+            console.log( sumNumbers(...oddNumbers) );
+        </script>
+    </head>
+    <body>
+    </body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt">
+	<head>
+		<meta charset="utf-8">
+        <title>Novos Array Methods</title>
+        <script>
+            const numbers = [1, 20, 33, 44, 55, 66, 77, 98];
+            
+            const users = [
+                {
+                    id: 1,
+                    name: "Alvaro",
+                    email: "alvaro@cenas.com",
+                    active: true
+                },
+                {
+                    id: 2,
+                    name: "Patricia",
+                    email: "patricia@cenas.com",
+                    active: true
+                },
+                {
+                    id: 3,
+                    name: "Gustavo",
+                    email: "gustavo@cenas.com",
+                    active: false
+                }
+            ];
+
+            /* método find(), encontra a primeira coisa num array que corresponda à condição pretendida */
+            const foundNumber = numbers.find(item => item > 40);
+            
+            console.log( foundNumber );
+            
+            /* exercício: utilizar o find sobre os users e encontrar o utilizador com email de patricia@cenas.com */
+            const foundUser = users.find( user => user.email === "patricia@cenas.com" );
+            console.log( foundUser );
+
+            /* método findIndex(), faz a mesma coisa que o find() mas em vez de retornar
+               o valor, retorna a chave ( a posição no array) */
+            const foundUserIndex = users.findIndex(user => user.id === 2);
+            
+            console.log( foundUserIndex, users[foundUserIndex] );
+            // usar o findIndex possibilita por exemplo alterar o array existente:
+            users[foundUserIndex].email = "patricia@proton.me";
+            console.log("após alteração:", users);
+
+            /* método filter() encontra todos os valores que correspondam à
+               condição que queiramos e cria um novo array com esses registos */ 
+            const evenNumbers = numbers.filter(number => number % 2 === 0);   
+            console.log("números pares (filter):", evenNumbers);
+
+            /* exercício: com o filter(), obter um array com apenas os utilizadores activos */
+            const activeUsers = users.filter(user => user.active === true);
+            console.log("apenas utilizadores activos (filter):", activeUsers);
+
+            /* método forEach(), percorre cada registo do array para fazer seja o que for com os ditos */
+            users.forEach(user => console.log( user.name ));
+            /* utilizar o forEach para desabilitar todos os utilizadores,
+               usando um segundo argumento para obter o index */
+            users.forEach( (user, index) => {
+                users[index].active = false;
+            });
+            console.log("utilizadores foram todos desabilitados com o forEach", users);
+
+            /* método map(), efectua uma transformação em cada registo do array,
+               retornando um novo array pós transformação */
+            const transformedArray = numbers.map( number => number * 3 );
+            console.log("após transformação (map):", transformedArray);
+
+            /* método reduce(), possibilita utilizar uma função complexa de transformação
+               do array até os resultados ficarem reduzidos pós transformação */
+            const reducer = (accumulator, value) => accumulator + value;
+
+            const result = numbers.reduce( reducer );
+            console.log(numbers, result);
+
+            /* exercício mais complexo: encontrar todas as encomendas do dia 11
+               e obter o total delas somado */
+            const orders = [
+                {
+                    id: 1,
+                    products: [],
+                    date: "2025-02-10",
+                    total: 200
+                },
+                {
+                    id: 2,
+                    products: [],
+                    date: "2025-02-11",
+                    total: 100
+                },
+                {
+                    id: 3,
+                    products: [],
+                    date: "2025-02-11",
+                    total: 400
+                },
+                {
+                    id: 4,
+                    products: [],
+                    date: "2025-02-12",
+                    total: 50
+                }
+            ];
+            
+            console.log("orders", orders);
+            
+            const reducerTotal = (accumulator, value) => accumulator + value.total;
+            
+            const filteredOrders = orders.filter(order => order.date === "2025-02-11");
+
+            console.log( filteredOrders.reduce( reducerTotal, 0 ) );
+        </script>
+    </head>
+    <body>
+    </body>
+</html>
